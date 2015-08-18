@@ -14,7 +14,7 @@ C#で書いたツールの寄せ集めです。
 	Windows 7 Home Premium
 	Visual C# 2010 Express
 
-	このファイルの場所は C:\Dev\Kit\README.md です。
+	このファイルの場所は C:\Dev\Kit\README.txt です。
 
 
 フォルダの説明
