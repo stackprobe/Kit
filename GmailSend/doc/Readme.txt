@@ -29,9 +29,14 @@
 
 		送信に失敗した場合、エラー内容を書き出す。Shift_JIS で書き出す。
 
-
 ----
 使用例
 
 	> GmailSend.exe /F from123@gmail.com /To to456@xxx.com /S あああ /B *Body.txt /C from123@gmail.com 1111
 
+----
+備忘
+
+	5.5.1 Authentication Required. Learm more at と返される場合、
+	アカウント情報 / Google へのログイン / 安全性の低いアプリの許可：有効
+	にする。
