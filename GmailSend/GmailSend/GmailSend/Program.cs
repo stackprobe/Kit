@@ -30,7 +30,7 @@ namespace GmailSend
 
 		private bool ArgIs(string spell)
 		{
-			if (_argq.Peek().ToLower() == spell.ToLower())
+			if (1 <= _argq.Count && _argq.Peek().ToLower() == spell.ToLower())
 			{
 				_argq.Dequeue();
 				return true;
