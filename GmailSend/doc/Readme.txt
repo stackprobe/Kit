@@ -9,8 +9,8 @@
 	              [/B 本文]
 	              [/A 添付ファイル] ...
 	              [/C ユーザー名 パスワード]
-	              [/Host サーバーホスト]
-	              [/Port サーバーポート番号]
+	              [/Host SMTP-サーバーホスト]
+	              [/Port SMTP-サーバーポート番号]
 	              [/-SSL]
 	              [/SF SUCCESSFUL-FILE]
 	              [/ELF ERROR-LOG-FILE]
