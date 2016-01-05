@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.IO.Compression;
 
 namespace WCluster
 {
@@ -36,7 +37,7 @@ namespace WCluster
 			return Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path));
 		}
 
-		private FileStream Wfs;
+		private GZipStream Wfs;
 		private byte[] RWBuff = new byte[1024 * 1024 * 4];
 
 		public void DirectoryToFile(string rDir, string wFile)
@@ -45,8 +46,9 @@ namespace WCluster
 			wFile = Path.GetFullPath(wFile);
 
 			using (FileStream wfs = new FileStream(wFile, FileMode.Create, FileAccess.Write))
+			using (GZipStream gzs = new GZipStream(wfs, CompressionMode.Compress))
 			{
-				Wfs = wfs;
+				Wfs = gzs;
 				IntoDir(rDir);
 				Wfs = null;
 			}
@@ -129,7 +131,7 @@ namespace WCluster
 			Wfs.Write(block, 0, size);
 		}
 
-		private FileStream Rfs;
+		private GZipStream Rfs;
 
 		public void FileToDirectory(string rFile, string wDir)
 		{
@@ -137,8 +139,9 @@ namespace WCluster
 			wDir = Path.GetFullPath(wDir);
 
 			using (FileStream rfs = new FileStream(rFile, FileMode.Open, FileAccess.Read))
+			using (GZipStream gzs = new GZipStream(rfs, CompressionMode.Decompress))
 			{
-				Rfs = rfs;
+				Rfs = gzs;
 				WriteDir(wDir);
 				Rfs = null;
 			}
