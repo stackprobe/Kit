@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("SetFileTime")]
+[assembly: AssemblyTitle("GetFilePart")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SetFileTime")]
+[assembly: AssemblyProduct("GetFilePart")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 次の GUID は、このプロジェクトが COM に公開される場合の、typelib の ID です
-[assembly: Guid("6fce58cc-3f5d-45db-99a1-61f671278ac6")]
+[assembly: Guid("8f9410e2-e4c7-4b51-b96b-944eaa7e4ba4")]
 
 // アセンブリのバージョン情報は、以下の 4 つの値で構成されています:
 //

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{10E73ECF-E04F-4FB2-BDCF-3EE2DDED8590}</ProjectGuid>
+    <ProjectGuid>{772A8F6A-3F97-498A-9644-CA02C1D88E33}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SetFileTime</RootNamespace>
-    <AssemblyName>SetFileTime</AssemblyName>
+    <RootNamespace>Dir2</RootNamespace>
+    <AssemblyName>Dir2</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
