@@ -22,7 +22,13 @@ namespace SetFileTime
 
 		private static void Main2(string[] args)
 		{
-			SetLastWriteTime(args[0], GetDateTime(args[1]));
+			Main3(args[0], GetDateTime(args[1]), args[2]);
+		}
+
+		private static void Main3(string wFile, DateTime wTime, string successfulFile)
+		{
+			SetLastWriteTime(wFile, wTime);
+			CreateFile(successfulFile);
 		}
 
 		private static DateTime GetDateTime(string sTime)
@@ -70,6 +76,12 @@ namespace SetFileTime
 		private static void SetLastWriteTime(string wFile, DateTime wTime)
 		{
 			new FileInfo(wFile).LastWriteTime = wTime;
+		}
+
+		private static void CreateFile(string wFile)
+		{
+			using (FileStream wfs = new FileStream(wFile, FileMode.Create, FileAccess.Write))
+			{ }
 		}
 	}
 }

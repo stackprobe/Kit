@@ -22,10 +22,10 @@ namespace GetFilePart
 
 		private static void Main2(string[] args)
 		{
-			GetFilePart(args[0], args[1], long.Parse(args[2]), long.Parse(args[3]));
+			GetFilePart(args[0], args[1], long.Parse(args[2]), long.Parse(args[3]), args[4]);
 		}
 
-		private static void GetFilePart(string rFile, string wFile, long startPos, long readSize)
+		private static void GetFilePart(string rFile, string wFile, long startPos, long readSize, string successfulFile)
 		{
 			using (FileStream rfs = new FileStream(rFile, FileMode.Open, FileAccess.Read))
 			using (FileStream wfs = new FileStream(wFile, FileMode.Create, FileAccess.Write))
@@ -33,6 +33,7 @@ namespace GetFilePart
 				rfs.Seek(startPos, SeekOrigin.Begin);
 				ReadWriteStream(rfs, wfs, readSize);
 			}
+			CreateFile(successfulFile);
 		}
 
 		private static void ReadWriteStream(FileStream rfs, FileStream wfs, long size)
@@ -50,6 +51,12 @@ namespace GetFilePart
 				wfs.Write(buff, 0, rwSize);
 				count += rwSize;
 			}
+		}
+
+		private static void CreateFile(string wFile)
+		{
+			using (FileStream wfs = new FileStream(wFile, FileMode.Create, FileAccess.Write))
+			{ }
 		}
 	}
 }

@@ -22,10 +22,10 @@ namespace AddFilePart
 
 		private static void Main2(string[] args)
 		{
-			AddFilePart(args[0], args[1], long.Parse(args[2]));
+			AddFilePart(args[0], args[1], long.Parse(args[2]), args[3]);
 		}
 
-		private static void AddFilePart(string rFile, string wFile, long startPos)
+		private static void AddFilePart(string rFile, string wFile, long startPos, string successfulFile)
 		{
 			long size = new FileInfo(rFile).Length;
 
@@ -35,6 +35,7 @@ namespace AddFilePart
 				wfs.Seek(startPos, SeekOrigin.Begin);
 				ReadWriteStream(rfs, wfs, size);
 			}
+			CreateFile(successfulFile);
 		}
 
 		private static void ReadWriteStream(FileStream rfs, FileStream wfs, long size)
@@ -52,6 +53,12 @@ namespace AddFilePart
 				wfs.Write(buff, 0, rwSize);
 				count += rwSize;
 			}
+		}
+
+		private static void CreateFile(string wFile)
+		{
+			using (FileStream wfs = new FileStream(wFile, FileMode.Create, FileAccess.Write))
+			{ }
 		}
 	}
 }

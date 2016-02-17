@@ -22,21 +22,25 @@ namespace Dir2
 
 		private static void Main2(string[] args)
 		{
-			PrintDir(args[0]);
+			PrintDir(args[0], args[1], args[2]);
 		}
 
-		private static void PrintDir(string dir)
+		private static void PrintDir(string dir, string wFile, string successfulFile)
 		{
-			DirectoryInfo dirInfo = new DirectoryInfo(dir);
+			using (FileStream wfs = new FileStream(wFile, FileMode.Create, FileAccess.Write))
+			{
+				DirectoryInfo dirInfo = new DirectoryInfo(dir);
 
-			foreach (FileInfo fi in dirInfo.GetFiles())
-			{
-				Console.WriteLine(ZPad("" + fi.Length, 19) + "*" + ToString(fi.LastWriteTime) + "*F*" + fi.Name);
+				foreach (FileInfo fi in dirInfo.GetFiles())
+				{
+					WriteLine(wfs, ZPad("" + fi.Length, 19) + "*" + ToString(fi.LastWriteTime) + "*F*" + fi.Name);
+				}
+				foreach (DirectoryInfo di in dirInfo.GetDirectories())
+				{
+					WriteLine(wfs, "0000000000000000000*20000101000000000*D*" + di.Name);
+				}
 			}
-			foreach (DirectoryInfo di in dirInfo.GetDirectories())
-			{
-				Console.WriteLine("0000000000000000000*20000101000000000*D*" + di.Name);
-			}
+			CreateFile(successfulFile);
 		}
 
 		private static string ToString(DateTime dt)
@@ -58,6 +62,28 @@ namespace Dir2
 				str = "0" + str;
 			}
 			return str;
+		}
+
+		private static Encoding Encoding_SJIS = Encoding.GetEncoding(932);
+		private static byte CR = 0x0d;
+		private static byte LF = 0x0a;
+
+		private static void WriteLine(FileStream wfs, string line)
+		{
+			Write(wfs, Encoding_SJIS.GetBytes(line));
+			//wfs.WriteByte(CR);
+			wfs.WriteByte(LF);
+		}
+
+		private static void Write(FileStream wfs, byte[] block)
+		{
+			wfs.Write(block, 0, block.Length);
+		}
+
+		private static void CreateFile(string wFile)
+		{
+			using (FileStream wfs = new FileStream(wFile, FileMode.Create, FileAccess.Write))
+			{ }
 		}
 	}
 }
