@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace PutFile
+namespace SetFileTime
 {
 	class Program
 	{
@@ -22,7 +22,7 @@ namespace PutFile
 
 		private static void Main2(string[] args)
 		{
-			PutFile(args[0], args[1], GetDateTime(args[3]));
+			SetLastWriteTime(args[0], GetDateTime(args[1]));
 		}
 
 		private static DateTime GetDateTime(string sTime)
@@ -67,11 +67,9 @@ namespace PutFile
 			return new DateTime(y, m, d, h, i, s, l);
 		}
 
-		private static void PutFile(string rFile, string wFile, DateTime wTime)
+		private static void SetLastWriteTime(string wFile, DateTime wTime)
 		{
-			File.Delete(wFile);
-			File.Move(rFile, wFile);
-			File.SetLastWriteTime(wFile, wTime);
+			new FileInfo(wFile).LastWriteTime = wTime;
 		}
 	}
 }

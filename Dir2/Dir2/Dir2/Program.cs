@@ -31,11 +31,11 @@ namespace Dir2
 
 			foreach (FileInfo fi in dirInfo.GetFiles())
 			{
-				Console.WriteLine(ZPad("" + fi.Length, 20) + " " + ToString(fi.LastWriteTime) + " F " + fi.Name);
+				Console.WriteLine(ZPad("" + fi.Length, 19) + "*" + ToString(fi.LastWriteTime) + "*F*" + fi.Name);
 			}
 			foreach (DirectoryInfo di in dirInfo.GetDirectories())
 			{
-				Console.WriteLine("00000000000000000000 20000101000000000 D " + di.Name);
+				Console.WriteLine("0000000000000000000*20000101000000000*D*" + di.Name);
 			}
 		}
 

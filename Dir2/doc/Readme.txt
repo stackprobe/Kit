@@ -5,6 +5,12 @@
 
 		DIR ... ディレクトリ
 
+	AddFilePart.exe READ-FILE WRITE-FILE START-POS
+
+		READ-FILE  ... 読み込みファイル
+		WRITE-FILE ... 出力ファイル
+		START-POS  ... 出力開始位置
+
 	GetFilePart.exe READ-FILE WRITE-FILE START-POS READ-SIZE
 
 		READ-FILE  ... 読み込みファイル
@@ -12,8 +18,7 @@
 		START-POS  ... 読み込み開始位置
 		READ-SIZE  ... 読み込みサイズ
 
-	PutFile.exe READ-FILE WRITE-FILE WRITE-TIME
+	SetFileTime.exe WRITE-FILE WRITE-TIME
 
-		READ-FILE  ... 読み込みファイル
 		WRITE-FILE ... 出力ファイル
-		WRITE-TIME ... 最終更新日時
+		WRITE-TIME ... 設定する最終更新日時, YYYYMMDDhhmmssLLL 形式 ex. 20160217041730123

@@ -1,8 +1,9 @@
 C:\Factory\Tools\RDMD.exe /RC out
 
 COPY Dir2\Dir2\bin\Release\Dir2.exe out
+COPY AddFilePart\AddFilePart\bin\Release\AddFilePart.exe out
 COPY GetFilePart\GetFilePart\bin\Release\GetFilePart.exe out
-COPY PutFile\PutFile\bin\Release\PutFile.exe out
+COPY SetFileTime\SetFileTime\bin\Release\SetFileTime.exe out
 C:\Factory\Tools\xcp.exe doc out
 
 C:\Factory\Tools\zcp.exe out C:\app\Kit\Dir2
