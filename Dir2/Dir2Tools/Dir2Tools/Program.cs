@@ -22,19 +22,7 @@ namespace Dir2Tools
 
 		private static void Main2(string[] args)
 		{
-			switch (args.Length)
-			{
-				case 3:
-					Main3(args[0], args[1], args[2]);
-					break;
-
-				case 4:
-					Main4(args[0], args[1], args[2], args[3]);
-					break;
-
-				default:
-					throw new Exception("不正なコマンド引数");
-			}
+			Main3(args[0], args[1], args[2]);
 		}
 
 		private static void Main3(string command, string path, string successfulFile)
@@ -57,22 +45,6 @@ namespace Dir2Tools
 
 				default:
 					throw new Exception("不明なコマンド_M3: " + command);
-			}
-			CreateFile(successfulFile);
-		}
-
-		private static void Main4(string command, string rFile, string wFile, string successfulFile)
-		{
-			command = command.ToUpper();
-
-			switch (command)
-			{
-				case "/MOVE":
-					File.Move(rFile, wFile);
-					break;
-
-				default:
-					throw new Exception("不明なコマンド_M4: " + command);
 			}
 			CreateFile(successfulFile);
 		}

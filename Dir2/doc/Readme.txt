@@ -6,12 +6,10 @@
 		DIR ... ディレクトリ
 		SUCCESSFUL-FILE ... 成功時作成するファイル
 
-	Dir2Tools.exe (/MD DIR | /RD DIR | /DEL FILE | /MOVE SRC-FILE DEST-FILE) SUCCESSFUL-FILE
+	Dir2Tools.exe (/MD DIR | /RD DIR | /DEL FILE) SUCCESSFUL-FILE
 
 		DIR  ... ディレクトリ
 		FILE ... ファイル
-		SRC-FILE  ... 移動元ファイル
-		DEST-FILE ... 移動先ファイル
 		SUCCESSFUL-FILE ... 成功時作成するファイル
 
 	AddFilePart.exe READ-FILE WRITE-FILE START-POS SUCCESSFUL-FILE
