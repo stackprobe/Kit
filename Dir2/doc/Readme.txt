@@ -32,3 +32,24 @@
 		WRITE-FILE ... 出力ファイル
 		WRITE-TIME ... 設定する最終更新日時, YYYYMMDDhhmmssLLL 形式 ex. 20160217041730123
 		SUCCESSFUL-FILE ... 成功時作成するファイル
+
+----
+引数をファイルで指定する。
+
+	実行ファイル //R 引数リストファイル
+
+	----
+	例
+
+	AddFilePart.exe abc.txt def.txt 123000 s.flg
+
+	->
+
+	123.txt に以下を記述する。
+
+		abc.txt
+		def.txt
+		123000
+		s.flg
+
+	AddFilePart.exe //R 123.txt

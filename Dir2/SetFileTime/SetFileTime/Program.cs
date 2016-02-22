@@ -12,7 +12,14 @@ namespace SetFileTime
 		{
 			try
 			{
-				Main2(args);
+				if (args[0] == "//R")
+				{
+					Main2(File.ReadAllLines(args[1]));
+				}
+				else
+				{
+					Main2(args);
+				}
 			}
 			catch (Exception e)
 			{
