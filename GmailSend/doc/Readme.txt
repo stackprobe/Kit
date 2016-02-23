@@ -32,7 +32,26 @@
 ----
 使用例
 
-	> GmailSend.exe /F from123@gmail.com /To to456@xxx.com /S あああ /B *Body.txt /C from123@gmail.com 1111
+	GmailSend.exe /F from123@gmail.com /To to456@xxx.com /S あああ /B *Body.txt /C from123@gmail.com 1111
+
+----
+引数をファイルで指定する。
+
+	123.txt に以下を記述する。(Shift_JIS)
+
+		/F
+		from123@gmail.com
+		/To
+		to456@xxx.com
+		/S
+		あああ
+		/B
+		*Body.txt
+		/C
+		from123@gmail.com
+		1111
+
+	GmailSend.exe //R 123.txt
 
 ----
 備忘

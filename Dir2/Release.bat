@@ -10,7 +10,7 @@ C:\Factory\Tools\xcp.exe doc out
 C:\Factory\Tools\zcp.exe out C:\app\Kit\Dir2
 C:\Factory\SubTools\zip.exe /O out Dir2
 COPY out\Dir2.zip S:\_kit
-C:\Factory\SubTools\nrun.exe /s 192.168.222.102 syncKit
+C:\Factory\SubTools\nrun.exe /s mimiko syncKit
 COPY out\Dir2.zip S:\_hidden
 
 PAUSE

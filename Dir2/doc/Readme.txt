@@ -38,14 +38,13 @@
 
 	実行ファイル //R 引数リストファイル
 
-	----
 	例
 
 	AddFilePart.exe abc.txt def.txt 123000 s.flg
 
 	->
 
-	123.txt に以下を記述する。
+	123.txt に以下を記述する。(Shift_JIS)
 
 		abc.txt
 		def.txt

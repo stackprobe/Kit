@@ -18,7 +18,11 @@ namespace GmailSend
 		{
 			try
 			{
-				new Program().Main2(args);
+				if (IsSameIgnoreCase(args[0], "//R"))
+				{
+					args = File.ReadAllLines(args[1], ENCODING_SJIS);
+				}
+				Main2(args);
 			}
 			catch (Exception e)
 			{
@@ -26,11 +30,11 @@ namespace GmailSend
 			}
 		}
 
-		private Queue<string> _argq;
+		private static Queue<string> _argq;
 
-		private bool ArgIs(string spell)
+		private static bool ArgIs(string spell)
 		{
-			if (1 <= _argq.Count && _argq.Peek().ToLower() == spell.ToLower())
+			if (1 <= _argq.Count && IsSameIgnoreCase(_argq.Peek(), spell))
 			{
 				_argq.Dequeue();
 				return true;
@@ -38,7 +42,7 @@ namespace GmailSend
 			return false;
 		}
 
-		private void Main2(string[] args)
+		private static void Main2(string[] args)
 		{
 			_argq = new Queue<string>(args);
 
@@ -144,9 +148,9 @@ namespace GmailSend
 			}
 		}
 
-		private readonly Encoding ENCODING_SJIS = Encoding.GetEncoding(932);
+		private static readonly Encoding ENCODING_SJIS = Encoding.GetEncoding(932);
 
-		private string GetText(string prm)
+		private static string GetText(string prm)
 		{
 			if (prm.StartsWith("**"))
 			{
@@ -157,6 +161,11 @@ namespace GmailSend
 				return File.ReadAllText(prm.Substring(1), ENCODING_SJIS);
 			}
 			return prm;
+		}
+
+		private static bool IsSameIgnoreCase(string a, string b)
+		{
+			return a.ToLower() == b.ToLower();
 		}
 	}
 }
