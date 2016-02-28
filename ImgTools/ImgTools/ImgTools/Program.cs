@@ -81,6 +81,24 @@ namespace ImgTools
 
 					continue;
 				}
+				if (ar.ArgIs("/EW"))
+				{
+					int new_w = int.Parse(ar.NextArg());
+					int new_h = (int)IntTools.DivRndOff((long)_img.Get_H() * new_w, _img.Get_W());
+
+					_img = new Expand().Main(_img, new_w, new_h);
+
+					continue;
+				}
+				if (ar.ArgIs("/EH"))
+				{
+					int new_h = int.Parse(ar.NextArg());
+					int new_w = (int)IntTools.DivRndOff((long)_img.Get_W() * new_h, _img.Get_H());
+
+					_img = new Expand().Main(_img, new_w, new_h);
+
+					continue;
+				}
 				if (ar.ArgIs("/C"))
 				{
 					int l = int.Parse(ar.NextArg());
