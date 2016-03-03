@@ -14,7 +14,7 @@ namespace GetFilePart
 			{
 				if (args[0] == "//R")
 				{
-					Main2(File.ReadAllLines(args[1]));
+					Main2(File.ReadAllLines(args[1], Encoding.GetEncoding(932)));
 				}
 				else
 				{
@@ -34,6 +34,16 @@ namespace GetFilePart
 
 		private static void GetFilePart(string rFile, string wFile, long startPos, long readSize, string successfulFile)
 		{
+			long rSize = new FileInfo(rFile).Length;
+
+			if (
+				startPos < 0 ||
+				readSize < 0 ||
+				rSize < startPos ||
+				rSize - startPos < readSize
+				)
+				throw new Exception("読み込み開始位置及びサイズエラー: " + startPos + ", " + readSize + ", " + rSize);
+
 			using (FileStream rfs = new FileStream(rFile, FileMode.Open, FileAccess.Read))
 			using (FileStream wfs = new FileStream(wFile, FileMode.Create, FileAccess.Write))
 			{

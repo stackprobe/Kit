@@ -14,7 +14,7 @@ namespace Dir2Tools
 			{
 				if (args[0] == "//R")
 				{
-					Main2(File.ReadAllLines(args[1]));
+					Main2(File.ReadAllLines(args[1], Encoding.GetEncoding(932)));
 				}
 				else
 				{

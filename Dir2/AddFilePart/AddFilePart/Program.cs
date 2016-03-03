@@ -14,7 +14,7 @@ namespace AddFilePart
 			{
 				if (args[0] == "//R")
 				{
-					Main2(File.ReadAllLines(args[1]));
+					Main2(File.ReadAllLines(args[1], Encoding.GetEncoding(932)));
 				}
 				else
 				{
@@ -34,13 +34,20 @@ namespace AddFilePart
 
 		private static void AddFilePart(string rFile, string wFile, long startPos, string successfulFile)
 		{
-			long size = new FileInfo(rFile).Length;
+			if (File.Exists(wFile) == false)
+				CreateFile(wFile);
+
+			long rSize = new FileInfo(rFile).Length;
+			long wSize = new FileInfo(wFile).Length;
+
+			if (startPos < 0 || wSize < startPos)
+				throw new Exception("書き込み開始位置エラー: " + startPos + ", " + wSize);
 
 			using (FileStream rfs = new FileStream(rFile, FileMode.Open, FileAccess.Read))
-			using (FileStream wfs = new FileStream(wFile, FileMode.OpenOrCreate, FileAccess.Write))
+			using (FileStream wfs = new FileStream(wFile, FileMode.Open, FileAccess.Write)) // don't FileMode.Create !!!
 			{
 				wfs.Seek(startPos, SeekOrigin.Begin);
-				ReadWriteStream(rfs, wfs, size);
+				ReadWriteStream(rfs, wfs, rSize);
 			}
 			CreateFile(successfulFile);
 		}
