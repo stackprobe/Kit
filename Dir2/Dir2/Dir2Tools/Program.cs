@@ -12,7 +12,7 @@ namespace Dir2Tools
 		{
 			try
 			{
-				if (args[0] == "//R")
+				if (args[0].ToUpper() == "//R")
 				{
 					Main2(File.ReadAllLines(args[1], Encoding.GetEncoding(932)));
 				}
