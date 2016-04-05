@@ -72,7 +72,7 @@ namespace Dir2
 		}
 
 		private static Encoding Encoding_SJIS = Encoding.GetEncoding(932);
-		private static byte CR = 0x0d;
+		//private static byte CR = 0x0d;
 		private static byte LF = 0x0a;
 
 		private static void WriteLine(FileStream wfs, string line)
