@@ -324,13 +324,14 @@ namespace HGet
 					for (; ; )
 					{
 						int readSize = r.Read(buff, 0, buff.Length);
+
+						if (readSize <= 0)
+							break;
+
 						totalSize += readSize;
 
 						if (_resBodyFileSizeMax < totalSize)
 							throw new Exception("Response body too long");
-
-						if (readSize <= 0)
-							break;
 
 						fs.Write(buff, 0, readSize);
 					}
