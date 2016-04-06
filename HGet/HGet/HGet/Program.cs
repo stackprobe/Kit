@@ -305,12 +305,12 @@ namespace HGet
 						byte[] bLine = Encoding.ASCII.GetBytes(line);
 
 						if (500000 < bLine.Length) // 500 KB
-							throw null;
+							throw new Exception("Response header field too long");
 
 						totalSize += bLine.Length;
 
 						if (500000 < totalSize) // 500 KB
-							throw null;
+							throw new Exception("Response header too long");
 
 						fs.Write(bLine, 0, bLine.Length);
 					}
@@ -319,10 +319,15 @@ namespace HGet
 				using (FileStream fs = new FileStream(_resBodyFile, FileMode.Create, FileAccess.Write))
 				{
 					byte[] buff = new byte[20000000]; // 20 MB
+					long totalSize = 0L;
 
 					for (; ; )
 					{
 						int readSize = r.Read(buff, 0, buff.Length);
+						totalSize += readSize;
+
+						if (_resBodyFileSizeMax < totalSize)
+							throw new Exception("Response body too long");
 
 						if (readSize <= 0)
 							break;
