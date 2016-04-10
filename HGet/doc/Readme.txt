@@ -6,7 +6,7 @@
 	         [/H HEADER-FIELD-NAME HEADER-FIELD-VALUE] ...
 	         [/B BODY-STRING | /BF BODY-FILE]
 	         [/RSF SUCCESSFULE-FILE] [/RHF RES-HEADER-FIELDS-FILE] [/RBF RES-BODY-FILE] [/RBFX RES-BODY-FILE-SIZE-MAX]
-	         [//]
+	         [/-]
 	         [URL | URL BODY-FILE]
 
 ----

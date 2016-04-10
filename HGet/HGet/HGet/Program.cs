@@ -15,7 +15,7 @@ namespace HGet
 		{
 			try
 			{
-				if (args[0].ToUpper() == "//R")
+				if (1 <= args.Length && args[0].ToUpper() == "//R")
 				{
 					Main2(File.ReadAllLines(args[1], ENCODING_SJIS));
 				}
@@ -32,7 +32,7 @@ namespace HGet
 
 		private static bool ArgIs(Queue<string> argq, string spell)
 		{
-			if (IsSameIgnoreCase(argq.Peek(), spell))
+			if (1 <= argq.Count && IsSameIgnoreCase(argq.Peek(), spell))
 			{
 				argq.Dequeue();
 				return true;
@@ -78,7 +78,7 @@ namespace HGet
 		{
 			Queue<string> argq = new Queue<string>(args);
 
-			while (ArgIs(argq, "//") == false)
+			while (ArgIs(argq, "/-") == false)
 			{
 				if (ArgIs(argq, "/P"))
 				{
