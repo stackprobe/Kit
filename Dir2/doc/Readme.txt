@@ -1,9 +1,10 @@
 ----
 コマンド
 
-	Dir2.exe DIR SUCCESSFUL-FILE
+	Dir2.exe DIR WRITE-FILE SUCCESSFUL-FILE
 
 		DIR ... ディレクトリ
+		WRITE-FILE ... 出力ファイル
 		SUCCESSFUL-FILE ... 成功時作成するファイル
 
 	Dir2Tools.exe (/MD DIR | /RD DIR | /DEL FILE) SUCCESSFUL-FILE
