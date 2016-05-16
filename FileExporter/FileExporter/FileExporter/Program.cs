@@ -88,12 +88,15 @@ namespace FileExporter
 				{
 					string wFile = Path.Combine(wDir, CTools.ZPad("" + fCount, 5) + ".dat");
 					string fFile = Path.Combine(wDir, CTools.ZPad("" + fCount, 5) + ".file");
+					string sFile = Path.Combine(wDir, CTools.ZPad("" + fCount, 5) + ".file_s");
 
 					Console.WriteLine("< " + rFile);
 					Console.WriteLine("> " + wFile);
 					Console.WriteLine("f " + fFile);
+					Console.WriteLine("s " + sFile);
 
 					File.WriteAllText(fFile, rFile, Encoding.UTF8);
+					File.WriteAllText(sFile, rFile, Encoding.GetEncoding(932));
 
 					if (File.Exists(rFile) == false)
 						throw new Exception("Before move, rFile not exists: " + rFile);
@@ -120,11 +123,17 @@ namespace FileExporter
 				{
 					string rFile = Path.Combine(wDir, CTools.ZPad("" + fCount, 5) + ".dat"); // from wDir !!!
 					string fFile = Path.Combine(wDir, CTools.ZPad("" + fCount, 5) + ".file");
+					string sFile = Path.Combine(wDir, CTools.ZPad("" + fCount, 5) + ".file_s");
 
 					Console.WriteLine("r.< " + rFile);
 					Console.WriteLine("r.f " + fFile);
+					Console.WriteLine("r.s " + sFile);
 
-					if (File.Exists(rFile) == false && File.Exists(fFile) == false)
+					if (
+						File.Exists(rFile) == false &&
+						File.Exists(fFile) == false &&
+						File.Exists(sFile) == false
+						)
 						break;
 
 					try
@@ -135,6 +144,7 @@ namespace FileExporter
 
 						File.Move(rFile, wFile);
 						File.Delete(fFile);
+						File.Delete(sFile);
 					}
 					catch (Exception ex)
 					{
@@ -166,9 +176,11 @@ namespace FileExporter
 				{
 					string rFile = file;
 					string fFile = CTools.ChangeSuffix(file, ".dat", ".file");
+					string sFile = CTools.ChangeSuffix(file, ".dat", ".file_s");
 
 					Console.WriteLine("< " + rFile);
 					Console.WriteLine("f " + fFile);
+					Console.WriteLine("s " + sFile);
 
 					string wFile = File.ReadAllText(fFile);
 
@@ -196,6 +208,7 @@ namespace FileExporter
 						throw new Exception("After move, wFile not exists: " + wFile);
 
 					File.Delete(fFile);
+					File.Delete(sFile);
 				}
 			}
 			CTools.CreateFile(successfulFile);
