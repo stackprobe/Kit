@@ -281,5 +281,43 @@ namespace ImgTools
 				}
 			}
 		}
+
+		public static ImageData Bokashi(ImageData src, int l, int t, int r, int b, int level, DotData dummyDot)
+		{
+			ImageData dest = new ImageData(src.Get_W(), src.Get_H());
+
+			for (int x = 0; x < src.Get_W(); x++)
+			{
+				for (int y = 0; y < src.Get_H(); y++)
+				{
+					DotData dot = src.GetDot(x, y);
+
+					if (l <= x && x <= r && t <= y && y <= b)
+					{
+						List<DotData> dd = new List<DotData>();
+
+						for (int cx = -level; cx <= level; cx++)
+						{
+							for (int cy = -level; cy <= level; cy++)
+							{
+								int dx = x + cx;
+								int dy = y + cy;
+								DotData d;
+
+								if (0 <= dx && dx < src.Get_W() && 0 <= dy && dy < src.Get_H())
+									d = src.GetDot(dx, dy);
+								else
+									d = dummyDot;
+
+								dd.Add(d);
+							}
+						}
+						dot = ImageTools.Mix(dd.ToArray());
+					}
+					dest.SetDot(x, y, dot);
+				}
+			}
+			return dest;
+		}
 	}
 }

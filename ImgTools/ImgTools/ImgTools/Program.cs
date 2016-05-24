@@ -277,6 +277,20 @@ namespace ImgTools
 				if (ar.ArgIs("/PRTSC"))
 				{
 					_img.Load(WinTools.PrintScreen());
+
+					continue;
+				}
+				if (ar.ArgIs("/BOKASHI"))
+				{
+					int l = int.Parse(ar.NextArg());
+					int t = int.Parse(ar.NextArg());
+					int r = int.Parse(ar.NextArg());
+					int b = int.Parse(ar.NextArg());
+					int level = int.Parse(ar.NextArg());
+
+					_img = Conv.Bokashi(_img, l, t, r, b, level, Consts.DummyDot);
+
+					continue;
 				}
 				break;
 			}

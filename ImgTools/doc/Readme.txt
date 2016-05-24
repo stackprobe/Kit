@@ -156,6 +156,16 @@
 			G ... int 0`255 V
 			B ... int 0`255 V
 
+	/BOKASHI L T R B LEVEL
+
+		‹éŒ`—Ìˆæ‚ğ‚Ú‚©‚·
+
+			L ... int 0`
+			T ... int 0`
+			R ... int 0`
+			B ... int 0`
+			LEVEL ... int 0`
+
 	/2 “ü—Íƒtƒ@ƒCƒ‹
 
 		ƒTƒu‰æ‘œ‚ğ“Ç‚İ‚ŞB
