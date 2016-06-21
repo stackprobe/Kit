@@ -72,7 +72,7 @@ namespace HGet
 		private static string _successfulFile = @"C:\temp\HGet_successful.flg";
 		private static string _resHeaderFieldsFile = @"C:\temp\HGet_resHeaderFields.txt";
 		private static string _resBodyFile = @"C:\temp\HGet_resBody.dat";
-		private static long _resBodyFileSizeMax = 5000000000L; // 5 GB
+		private static long _resBodyFileSizeMax = 20000000L; // 20 MB
 
 		private static void Main2(string[] args)
 		{
