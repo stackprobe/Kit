@@ -319,5 +319,45 @@ namespace ImgTools
 			}
 			return dest;
 		}
+
+		public static ImageData DotFltr(ImageData src, string aCmd, string rCmd, string gCmd, string bCmd)
+		{
+			ImageData dest = new ImageData(src.Get_W(), src.Get_H());
+
+			for (int x = 0; x < src.Get_W(); x++)
+			{
+				for (int y = 0; y < src.Get_H(); y++)
+				{
+					DotData rDot = src.GetDot(x, y);
+					DotData wDot = new DotData(
+						DotFltr(rDot, aCmd),
+						DotFltr(rDot, rCmd),
+						DotFltr(rDot, gCmd),
+						DotFltr(rDot, bCmd)
+						);
+
+					dest.SetDot(x, y, wDot);
+				}
+			}
+			return dest;
+		}
+
+		private static int DotFltr(DotData rDot, string cmd)
+		{
+			switch (cmd.ToUpper())
+			{
+				case "A": return rDot.C[DotData.A];
+				case "R": return rDot.C[DotData.R];
+				case "G": return rDot.C[DotData.G];
+				case "B": return rDot.C[DotData.B];
+				case "AVG_RGB": return (int)IntTools.DivRndOff(rDot.C[DotData.R] + rDot.C[DotData.G] + rDot.C[DotData.B], 3);
+				case "A_REV": return 255 - rDot.C[DotData.A];
+				case "R_REV": return 255 - rDot.C[DotData.R];
+				case "G_REV": return 255 - rDot.C[DotData.G];
+				case "B_REV": return 255 - rDot.C[DotData.B];
+				case "AVG_RGB_REV": return 255 - (int)IntTools.DivRndOff(rDot.C[DotData.R] + rDot.C[DotData.G] + rDot.C[DotData.B], 3);
+			}
+			return int.Parse(cmd);
+		}
 	}
 }

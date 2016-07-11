@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImgToCsv", "ImgToCsv\ImgToCsv.csproj", "{CB61A2FC-DA4E-4564-8A0D-B0ABB0A0615B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BmpToCsv", "BmpToCsv\BmpToCsv.csproj", "{CB61A2FC-DA4E-4564-8A0D-B0ABB0A0615B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

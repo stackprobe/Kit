@@ -292,6 +292,18 @@ namespace ImgTools
 
 					continue;
 				}
+				if (ar.ArgIs("/DOTFLTR"))
+				{
+					string aCmd = ar.NextArg();
+					string rCmd = ar.NextArg();
+					string gCmd = ar.NextArg();
+					string bCmd = ar.NextArg();
+
+					_img = Conv.DotFltr(_img, aCmd, rCmd, gCmd, bCmd);
+
+					continue;
+				}
+
 				break;
 			}
 

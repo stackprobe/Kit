@@ -6,7 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Drawing.Imaging;
 
-namespace ImgToCsv
+namespace BmpToCsv
 {
 	class Program
 	{
@@ -42,7 +42,7 @@ namespace ImgToCsv
 			{
 				if (this.IsCsvPath(wFile)) // ? img -> csv
 				{
-					this.ImgToCsv(rFile, wFile);
+					this.BmpToCsv(rFile, wFile);
 				}
 				else // ? img -> img
 				{
@@ -50,7 +50,7 @@ namespace ImgToCsv
 
 					try
 					{
-						this.ImgToCsv(rFile, midFile);
+						this.BmpToCsv(rFile, midFile);
 						this.CsvToImg(midFile, wFile);
 					}
 					finally
@@ -66,7 +66,7 @@ namespace ImgToCsv
 			return Path.GetExtension(path).ToLower() == ".csv";
 		}
 
-		private void ImgToCsv(string rFile, string wFile)
+		private void BmpToCsv(string rFile, string wFile)
 		{
 			List<string[]> rows = new List<string[]>();
 
