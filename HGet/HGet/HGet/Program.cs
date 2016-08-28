@@ -63,7 +63,7 @@ namespace HGet
 		private static ProxyMode_e _proxyMode = ProxyMode_e.IE;
 		private static string _proxyHost = "localhost";
 		private static int _proxyPort = 8080;
-		private static int _timeoutMillis = 20000;
+		private static int _timeoutMillis = 30000;
 		private static Method_e _method = Method_e.GET;
 		private static string _url = "http://localhost/";
 		private static Version_e _version = Version_e.HTTP_11;
