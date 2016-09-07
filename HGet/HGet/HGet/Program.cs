@@ -69,6 +69,8 @@ namespace HGet
 		private static Version_e _version = Version_e.HTTP_11;
 		private static List<string[]> _headerFields = new List<string[]>();
 		private static byte[] _body = null; // null == no body
+		private static string _bodyFile = null; // null == no body-2
+		private static byte[] _bodyTrailer = null; // null == no body-3
 		private static string _successfulFile = @"C:\temp\HGet_successful.flg";
 		private static string _resHeaderFieldsFile = @"C:\temp\HGet_resHeaderFields.txt";
 		private static string _resBodyFile = @"C:\temp\HGet_resBody.dat";
@@ -158,6 +160,21 @@ namespace HGet
 					_body = File.ReadAllBytes(argq.Dequeue());
 					continue;
 				}
+				if (ArgIs(argq, "/F"))
+				{
+					_bodyFile = argq.Dequeue();
+					continue;
+				}
+				if (ArgIs(argq, "/T"))
+				{
+					_bodyTrailer = ENCODING_SJIS.GetBytes(argq.Dequeue());
+					continue;
+				}
+				if (ArgIs(argq, "/TF"))
+				{
+					_bodyTrailer = File.ReadAllBytes(argq.Dequeue());
+					continue;
+				}
 				if (ArgIs(argq, "/RSF"))
 				{
 					_successfulFile = argq.Dequeue();
@@ -189,7 +206,8 @@ namespace HGet
 			{
 				_method = Method_e.POST;
 				_url = argq.Dequeue();
-				_body = File.ReadAllBytes(argq.Dequeue());
+				//_body = File.ReadAllBytes(argq.Dequeue());
+				_bodyFile = argq.Dequeue();
 			}
 
 			Perform();
@@ -271,13 +289,52 @@ namespace HGet
 				}
 				hwr.Headers.Add(name, value);
 			}
-			if (_body != null)
+			if (_body != null || _bodyFile != null)
 			{
-				hwr.ContentLength = _body.Length;
+				long total = 0L;
+
+				if (_body != null)
+				{
+					total += _body.Length;
+				}
+				if (_bodyFile != null)
+				{
+					total += new FileInfo(_bodyFile).Length;
+				}
+				if (_bodyTrailer != null)
+				{
+					total += _bodyTrailer.Length;
+				}
+				hwr.ContentLength = total;
 
 				using (Stream w = hwr.GetRequestStream())
 				{
-					w.Write(_body, 0, _body.Length);
+					if (_body != null)
+					{
+						w.Write(_body, 0, _body.Length);
+					}
+					if (_bodyFile != null)
+					{
+						using (FileStream r = new FileStream(_bodyFile, FileMode.Open, FileAccess.Read))
+						{
+							byte[] buff = new byte[20000000]; // 20 MB
+
+							for (; ; )
+							{
+								int readSize = r.Read(buff, 0, buff.Length);
+
+								if (readSize <= 0)
+									break;
+
+								w.Write(buff, 0, readSize);
+							}
+						}
+					}
+					if (_bodyTrailer != null)
+					{
+						w.Write(_body, 0, _bodyTrailer.Length);
+					}
+					w.Flush();
 				}
 			}
 

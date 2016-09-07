@@ -5,6 +5,8 @@
 	         [/M (HEAD | GET | POST)] [/U URL] [/V (10 | 11)]
 	         [/H HEADER-FIELD-NAME HEADER-FIELD-VALUE] ...
 	         [/B BODY-STRING | /BF BODY-FILE]
+	         [/F BODY-2-FILE]
+	         [/T BODY-3-STRING | /TF BODY-3-FILE]
 	         [/RSF SUCCESSFULE-FILE] [/RHF RES-HEADER-FIELDS-FILE] [/RBF RES-BODY-FILE] [/RBFX RES-BODY-FILE-SIZE-MAX]
 	         [/-]
 	         [URL | URL BODY-FILE]
