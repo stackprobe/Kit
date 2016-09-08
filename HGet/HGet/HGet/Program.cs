@@ -289,7 +289,7 @@ namespace HGet
 				}
 				hwr.Headers.Add(name, value);
 			}
-			if (_body != null || _bodyFile != null)
+			if (_body != null || _bodyFile != null || _bodyTrailer != null)
 			{
 				long total = 0L;
 
