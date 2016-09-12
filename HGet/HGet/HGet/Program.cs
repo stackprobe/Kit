@@ -152,7 +152,7 @@ namespace HGet
 				}
 				if (ArgIs(argq, "/B"))
 				{
-					_body = ENCODING_SJIS.GetBytes(argq.Dequeue());
+					_body = StringToBody(argq.Dequeue(), ENCODING_SJIS);
 					continue;
 				}
 				if (ArgIs(argq, "/BF"))
@@ -167,7 +167,7 @@ namespace HGet
 				}
 				if (ArgIs(argq, "/T"))
 				{
-					_bodyTrailer = ENCODING_SJIS.GetBytes(argq.Dequeue());
+					_bodyTrailer = StringToBody(argq.Dequeue(), ENCODING_SJIS);
 					continue;
 				}
 				if (ArgIs(argq, "/TF"))
@@ -406,6 +406,20 @@ namespace HGet
 		{
 			using (FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write))
 			{ }
+		}
+
+		private const string S_ESCAPE = "\x1b";
+
+		private static byte[] StringToBody(string str, Encoding encoding)
+		{
+			str = str.Replace("$$", S_ESCAPE);
+			str = str.Replace("$t", "\t");
+			str = str.Replace("$r", "\r");
+			str = str.Replace("$n", "\n");
+			str = str.Replace("$s", " ");
+			str = str.Replace(S_ESCAPE, "$");
+
+			return encoding.GetBytes(str);
 		}
 	}
 }
