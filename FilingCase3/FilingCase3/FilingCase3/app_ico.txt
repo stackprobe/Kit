@@ -1,2 +1,0 @@
-MainWin の TaskTrayIcon の Icon のみ app16.ico をセットする。
-それ以外は app.ico をセットする。
