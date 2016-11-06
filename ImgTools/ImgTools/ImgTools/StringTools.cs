@@ -20,6 +20,13 @@ namespace ImgTools
 			return str;
 		}
 
+		public static string ToFormatDig(string str)
+		{
+			str = Replace(str, DIGIT, '9');
+
+			return str;
+		}
+
 		public static string Replace(string str, string fromChrs, char toChr)
 		{
 			foreach (char fromChr in fromChrs)

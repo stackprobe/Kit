@@ -344,7 +344,11 @@ namespace ImgTools
 
 		private static int DotFltr(DotData rDot, string cmd)
 		{
-			switch (cmd.ToUpper())
+			cmd = cmd.ToUpper();
+
+			string fmt = StringTools.ToFormatDig(cmd);
+
+			switch (fmt)
 			{
 				case "A": return rDot.C[DotData.A];
 				case "R": return rDot.C[DotData.R];
@@ -356,8 +360,17 @@ namespace ImgTools
 				case "G_REV": return 255 - rDot.C[DotData.G];
 				case "B_REV": return 255 - rDot.C[DotData.B];
 				case "AVG_RGB_REV": return 255 - (int)IntTools.DivRndOff(rDot.C[DotData.R] + rDot.C[DotData.G] + rDot.C[DotData.B], 3);
+				case "A:99": return DotFltr_Pct(rDot.C[DotData.A], cmd);
+				case "R:99": return DotFltr_Pct(rDot.C[DotData.R], cmd);
+				case "G:99": return DotFltr_Pct(rDot.C[DotData.G], cmd);
+				case "B:99": return DotFltr_Pct(rDot.C[DotData.B], cmd);
 			}
 			return int.Parse(cmd);
+		}
+
+		private static int DotFltr_Pct(int color, string cmd)
+		{
+			return IntTools.ToInt(color * int.Parse(cmd.Substring(2)) / 100.0);
 		}
 	}
 }

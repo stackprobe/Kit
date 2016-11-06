@@ -18,5 +18,13 @@ namespace ImgTools
 
 			return ans + rem;
 		}
+
+		public static int ToInt(double value)
+		{
+			if (value < 0.0)
+				return (int)(value - 0.5);
+			else
+				return (int)(value + 0.5);
+		}
 	}
 }
