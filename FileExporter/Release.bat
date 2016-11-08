@@ -7,6 +7,6 @@ C:\Factory\Tools\zcp.exe out C:\app\Kit\FileExporter
 C:\Factory\SubTools\zip.exe /O out FileExporter
 COPY out\FileExporter.zip S:\_kit
 C:\Factory\SubTools\nrun.exe /s mimiko syncKit
-COPY out\FileExporter.zip S:\_hidden
+COPY out\FileExporter.zip S:\_hidden\release
 
 PAUSE
