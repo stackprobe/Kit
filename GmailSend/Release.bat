@@ -7,6 +7,6 @@ C:\Factory\Tools\zcp.exe out C:\app\Kit\GmailSend
 C:\Factory\SubTools\zip.exe /O out GmailSend
 COPY out\GmailSend.zip S:\_kit
 C:\Factory\SubTools\nrun.exe /s mimiko syncKit
-COPY out\GmailSend.zip S:\_hidden\release
+COPY out\GmailSend.zip S:\_hidden\release\Kit
 
 PAUSE
