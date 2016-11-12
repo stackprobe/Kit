@@ -8,8 +8,12 @@
 	         [/F BODY-2-FILE]
 	         [/T BODY-3-STRING | /TF BODY-3-FILE]
 	         [/RSF SUCCESSFULE-FILE] [/RHF RES-HEADER-FIELDS-FILE] [/RBF RES-BODY-FILE] [/RBFX RES-BODY-FILE-SIZE-MAX]
+			 [/K | /K-]
 	         [/-]
 	         [URL | URL BODY-FILE]
+
+		/K  ... 終了時キー待ち。
+		/K- ... エラー終了時キー待ち。
 
 ----
 コマンド引数をファイルで指定する。

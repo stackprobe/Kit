@@ -27,6 +27,17 @@ namespace HGet
 			catch (Exception e)
 			{
 				Console.WriteLine(e);
+
+				if (_errorKeyWait)
+				{
+					Console.WriteLine("Press any key...");
+					Console.ReadKey();
+				}
+			}
+			if (_endKeyWait)
+			{
+				Console.WriteLine("Press any key...");
+				Console.ReadKey();
 			}
 		}
 
@@ -75,6 +86,8 @@ namespace HGet
 		private static string _resHeaderFieldsFile = @"C:\temp\HGet_resHeaderFields.txt";
 		private static string _resBodyFile = @"C:\temp\HGet_resBody.dat";
 		private static long _resBodyFileSizeMax = 20000000L; // 20 MB
+		private static bool _endKeyWait = false;
+		private static bool _errorKeyWait = false;
 
 		private static void Main2(string[] args)
 		{
@@ -193,6 +206,16 @@ namespace HGet
 				if (ArgIs(argq, "/RBFX"))
 				{
 					_resBodyFileSizeMax = long.Parse(argq.Dequeue());
+					continue;
+				}
+				if (ArgIs(argq, "/K"))
+				{
+					_endKeyWait = true;
+					continue;
+				}
+				if (ArgIs(argq, "/K-"))
+				{
+					_errorKeyWait = true;
 					continue;
 				}
 				break;
