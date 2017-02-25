@@ -9,6 +9,8 @@
 			E-DIR ... 存在する空のディレクトリ
 			SUCCESSFIL-FILE ... 成功時ファイルを作成する。
 
+			★ R-DIR 内のファイルを「移動」することに注意！
+
 	インポート
 
 		FileExporter.exe /I E-DIR SUCCESSFUL-FILE
