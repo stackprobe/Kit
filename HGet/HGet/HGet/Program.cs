@@ -361,6 +361,8 @@ namespace HGet
 				}
 			}
 
+			// ステータスコード 301 のとき転送先のコンテンツを勝手に取ってきてくれる。
+
 			// ステータスコード 200 以外の場合は例外を投げる ???
 
 			using (WebResponse res = hwr.GetResponse())
