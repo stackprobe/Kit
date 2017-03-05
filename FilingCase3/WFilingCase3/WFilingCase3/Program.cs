@@ -7,6 +7,7 @@ using Microsoft.Win32;
 using System.Text;
 using System.IO;
 using System.Reflection;
+using Charlotte.Tools;
 
 namespace Charlotte
 {
@@ -24,6 +25,23 @@ namespace Charlotte
 			AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(currentDomainUnhandledException);
 			SystemEvents.SessionEnding += new SessionEndingEventHandler(sessionEnding);
 
+			{
+				ArgsReader args = new ArgsReader();
+
+				for (; ; )
+				{
+					if (args.argIs("/C"))
+					{
+						continue;
+					}
+					if (args.argIs("/E"))
+					{
+						Environment.Exit(0);
+					}
+					break;
+				}
+			}
+
 			Mutex procMutex = new Mutex(false, APP_IDENT);
 
 			if (procMutex.WaitOne(0) && GlobalProcMtx.create(APP_IDENT, APP_TITLE))
@@ -33,6 +51,9 @@ namespace Charlotte
 				checkAloneExe();
 				checkLogonUser();
 
+				Gnd.i.loadConf();
+				Gnd.i.loadData();
+
 				// orig >
 
 				Application.EnableVisualStyles();
@@ -40,6 +61,8 @@ namespace Charlotte
 				Application.Run(new MainWin());
 
 				// < orig
+
+				Gnd.i.saveData();
 
 				GlobalProcMtx.release();
 				procMutex.ReleaseMutex();
