@@ -28,7 +28,7 @@ namespace Charlotte
 
 		// ---- conf data ----
 
-		public Consts.ShowConsole_e serverShowConsole;
+		public Consts.ShowConsole_e showConsole = Consts.ShowConsole_e.HIDE;
 
 		public void loadConf()
 		{
@@ -44,7 +44,7 @@ namespace Charlotte
 
 				// items >
 
-				serverShowConsole = (Consts.ShowConsole_e)int.Parse(lines[c++]);
+				showConsole = (Consts.ShowConsole_e)int.Parse(lines[c++]);
 
 				// < items
 			}
@@ -134,7 +134,7 @@ namespace Charlotte
 		public CTools cTools = new CTools();
 		public Icon iconServerRunning;
 		public Icon iconServerNotRunning;
-		public ServerProc serverProc;
+		public ServerProc serverProc = new ServerProc();
 		public NamedEventObject evStop;
 	}
 }

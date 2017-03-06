@@ -46,6 +46,8 @@ namespace Charlotte
 					Gnd.i.rootDir,
 					"/D",
 					Gnd.i.keepDiskFree_MB + "000000",
+					"/E",
+					Consts.EV_SERVER_STOP,
 					"HARUNA-WA-DJBD",
 				},
 				StringTools.ENCODING_SJIS
@@ -59,7 +61,7 @@ namespace Charlotte
 				psi.CreateNoWindow = true;
 				psi.UseShellExecute = false;
 
-				switch (Gnd.i.serverShowConsole)
+				switch (Gnd.i.showConsole)
 				{
 					case Consts.ShowConsole_e.SHOW_MINIMIZE:
 						psi.CreateNoWindow = false;
@@ -83,18 +85,10 @@ namespace Charlotte
 
 			while (_proc.HasExited == false)
 			{
-				// 停止リクエスト
+				using (NamedEventObject ev = new NamedEventObject(Consts.EV_SERVER_STOP)) // 停止リクエスト
 				{
-					ProcessStartInfo psi = new ProcessStartInfo();
-
-					psi.FileName = serverFile;
-					psi.Arguments = "HARUNA-WA-DJBD /S";
-					psi.CreateNoWindow = true;
-					psi.UseShellExecute = false;
-
-					Process.Start(psi).WaitForExit();
+					ev.set();
 				}
-
 				Thread.Sleep(2000);
 			}
 			_proc = null;

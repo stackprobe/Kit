@@ -64,7 +64,6 @@ namespace Charlotte
 				Gnd.i.iconServerRunning = new Icon(Gnd.i.getIconFile("app_16_11"));
 				Gnd.i.iconServerNotRunning = new Icon(Gnd.i.getIconFile("app_16_01"));
 
-				Gnd.i.serverProc = new ServerProc();
 				Gnd.i.serverProc.start();
 
 				// orig >
@@ -94,7 +93,7 @@ namespace Charlotte
 			procMutex.Close();
 		}
 
-		public const string APP_IDENT = "{30fdc31f-0583-4da2-a56f-bef0249ec712}";
+		public const string APP_IDENT = "{1dafa8a1-bfd6-47a7-b00b-5c536522d758}";
 		public const string APP_TITLE = "FilingCase3";
 
 		private static void applicationThreadException(object sender, ThreadExceptionEventArgs e)
