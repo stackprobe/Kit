@@ -56,7 +56,7 @@ namespace Charlotte
 			this.taskTrayIcon.Visible = false;
 		}
 
-		private void 終了XToolStripMenuItem_Click(object sender, EventArgs e)
+		private void 終了ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			this.mtEnabled = false;
 			this.Close();
@@ -75,13 +75,109 @@ namespace Charlotte
 
 			try
 			{
-				// TODO
+				{
+					Icon icon;
+
+					if (Gnd.i.serverProc.isRunning())
+						icon = Gnd.i.iconServerRunning;
+					else
+						icon = Gnd.i.iconServerNotRunning;
+
+					if (this.taskTrayIcon.Icon != icon)
+					{
+						this.taskTrayIcon.Icon = icon;
+
+						{
+							string text;
+
+							if (Gnd.i.serverProc.isRunning())
+								text = "FilingCase3 ";
+							else
+								text = "FilingCase3 / サービスは停止しています。";
+
+							this.taskTrayIcon.Text = text;
+						}
+					}
+				}
+
+				if (Gnd.i.evStop.waitForMillis(0))
+				{
+					this.mtEnabled = false;
+					this.Close();
+					return;
+				}
 			}
 			finally
 			{
 				this.mtBusy = false;
 				this.mtCount++;
 			}
+		}
+
+		private void 再起動ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.mtEnabled = false;
+			this.taskTrayIcon.Visible = false;
+
+			BusyDlg.perform(delegate
+			{
+				Gnd.i.serverProc.end();
+				Gnd.i.serverProc.start();
+			});
+
+			this.taskTrayIcon.Visible = true;
+			this.mtEnabled = true;
+		}
+
+		private void beforeShowDialog()
+		{
+			this.mtEnabled = false;
+			this.taskTrayIcon.Visible = false;
+
+			BusyDlg.perform(delegate
+			{
+				Gnd.i.serverProc.end();
+			});
+		}
+
+		private void afterShowDialog()
+		{
+			Gnd.i.serverProc.start();
+			this.taskTrayIcon.Visible = true;
+			this.mtEnabled = true;
+		}
+
+		private void ポート番号ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			beforeShowDialog();
+
+			using (PortNoDlg f = new PortNoDlg())
+			{
+				f.ShowDialog();
+			}
+			afterShowDialog();
+		}
+
+		private void データディレクトリToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			beforeShowDialog();
+
+			using (RootDirDlg f = new RootDirDlg())
+			{
+				f.ShowDialog();
+			}
+			afterShowDialog();
+		}
+
+		private void 詳細設定ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			beforeShowDialog();
+
+			using (SettingDlg f = new SettingDlg())
+			{
+				f.ShowDialog();
+			}
+			afterShowDialog();
 		}
 	}
 }

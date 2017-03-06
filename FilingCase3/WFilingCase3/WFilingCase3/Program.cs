@@ -8,6 +8,7 @@ using System.Text;
 using System.IO;
 using System.Reflection;
 using Charlotte.Tools;
+using System.Drawing;
 
 namespace Charlotte
 {
@@ -30,12 +31,16 @@ namespace Charlotte
 
 				for (; ; )
 				{
-					if (args.argIs("/C"))
+					if (args.argIs("/dummy"))
 					{
 						continue;
 					}
-					if (args.argIs("/E"))
+					if (args.argIs("/S"))
 					{
+						using (NamedEventObject ev = new NamedEventObject(Consts.EV_STOP))
+						{
+							ev.set();
+						}
 						Environment.Exit(0);
 					}
 					break;
@@ -54,6 +59,14 @@ namespace Charlotte
 				Gnd.i.loadConf();
 				Gnd.i.loadData();
 
+				Gnd.i.evStop = new NamedEventObject(Consts.EV_STOP);
+
+				Gnd.i.iconServerRunning = new Icon(Gnd.i.getIconFile("app_16_11"));
+				Gnd.i.iconServerNotRunning = new Icon(Gnd.i.getIconFile("app_16_01"));
+
+				Gnd.i.serverProc = new ServerProc();
+				Gnd.i.serverProc.start();
+
 				// orig >
 
 				Application.EnableVisualStyles();
@@ -62,7 +75,18 @@ namespace Charlotte
 
 				// < orig
 
+				BusyDlg.perform(delegate
+				{
+					Gnd.i.serverProc.end();
+					Gnd.i.serverProc = null;
+				});
+
 				Gnd.i.saveData();
+
+				FileTools.clearTMP();
+
+				Gnd.i.evStop.Dispose();
+				Gnd.i.evStop = null;
 
 				GlobalProcMtx.release();
 				procMutex.ReleaseMutex();
@@ -71,7 +95,7 @@ namespace Charlotte
 		}
 
 		public const string APP_IDENT = "{30fdc31f-0583-4da2-a56f-bef0249ec712}";
-		public const string APP_TITLE = "WFilingCase3";
+		public const string APP_TITLE = "FilingCase3";
 
 		private static void applicationThreadException(object sender, ThreadExceptionEventArgs e)
 		{
@@ -152,7 +176,7 @@ namespace Charlotte
 
 		private static void checkAloneExe()
 		{
-			if (File.Exists("WFilingCase3.sig")) // リリースに含まれるファイル
+			if (File.Exists("app_16_11.dat")) // リリースに含まれるファイル
 				return;
 
 			if (Directory.Exists(@"..\Debug")) // ? devenv

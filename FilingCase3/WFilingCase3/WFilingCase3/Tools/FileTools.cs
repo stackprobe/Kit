@@ -102,6 +102,16 @@ namespace Charlotte.Tools
 			}
 		}
 
+		public static string getProgramData()
+		{
+			string dir = getTMP_EnvName("ProgramData");
+
+			if (dir == null)
+				throw null;
+
+			return dir;
+		}
+
 		// ls* -- 相対パスの場合、戻り値のリストも相対パスになる。
 
 		public static string[] lsFiles(string dir)

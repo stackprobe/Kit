@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Charlotte.Tools;
 using System.IO;
+using System.Drawing;
 
 namespace Charlotte
 {
@@ -27,9 +28,7 @@ namespace Charlotte
 
 		// ---- conf data ----
 
-		public string dummyConfString = "default";
-		public bool dummyConfFlag = false;
-		public int dummyConfInt = -1;
+		public Consts.ShowConsole_e serverShowConsole;
 
 		public void loadConf()
 		{
@@ -45,9 +44,7 @@ namespace Charlotte
 
 				// items >
 
-				dummyConfString = lines[c++];
-				dummyConfFlag = StringTools.toFlag(lines[c++]);
-				dummyConfInt = IntTools.toInt(lines[c++]);
+				serverShowConsole = (Consts.ShowConsole_e)int.Parse(lines[c++]);
 
 				// < items
 			}
@@ -62,9 +59,10 @@ namespace Charlotte
 
 		// ---- saved data ----
 
-		public string dummyDataString = "default";
-		public bool dummyDataFlag = false;
-		public int dummyDataInt = -1;
+		public int portNo = 65123;
+		public int connectMax = 100;
+		public string rootDir = defRootDir;
+		public int keepDiskFree_MB = 500;
 
 		public void loadData()
 		{
@@ -75,9 +73,10 @@ namespace Charlotte
 
 				// items >
 
-				dummyDataString = lines[c++];
-				dummyDataFlag = StringTools.toFlag(lines[c++]);
-				dummyDataInt = IntTools.toInt(lines[c++]);
+				portNo = IntTools.toInt(lines[c++], 1, 65535);
+				connectMax = IntTools.toInt(lines[c++], 1, IntTools.IMAX);
+				rootDir = lines[c++];
+				keepDiskFree_MB = IntTools.toInt(lines[c++]);
 
 				// < items
 			}
@@ -93,9 +92,10 @@ namespace Charlotte
 
 				// items >
 
-				lines.Add(dummyDataString);
-				lines.Add(StringTools.toString(dummyDataFlag));
-				lines.Add("" + dummyDataInt);
+				lines.Add("" + portNo);
+				lines.Add("" + connectMax);
+				lines.Add(rootDir);
+				lines.Add("" + keepDiskFree_MB);
 
 				// < items
 
@@ -111,5 +111,30 @@ namespace Charlotte
 		}
 
 		// ----
+
+		public static string defRootDir
+		{
+			get
+			{
+				return Path.Combine(FileTools.getProgramData(), @"cerulean charlotte\FilingCase3");
+			}
+		}
+
+		public string getIconFile(string name)
+		{
+			string file = name + ".dat";
+
+			if (File.Exists(file) == false)
+				file = @"..\..\..\..\res\" + name + ".ico";
+
+			file = FileTools.makeFullPath(file);
+			return file;
+		}
+
+		public CTools cTools = new CTools();
+		public Icon iconServerRunning;
+		public Icon iconServerNotRunning;
+		public ServerProc serverProc;
+		public NamedEventObject evStop;
 	}
 }

@@ -32,13 +32,15 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWin));
 			this.taskTrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.ttiMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.終了XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.mainTimer = new System.Windows.Forms.Timer(this.components);
-			this.設定SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ポート番号ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.データディレクトリToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+			this.詳細設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.再起動ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-			this.サービスEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.再起動SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.停止TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mainTimer = new System.Windows.Forms.Timer(this.components);
 			this.ttiMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -46,62 +48,79 @@
 			// 
 			this.taskTrayIcon.ContextMenuStrip = this.ttiMenu;
 			this.taskTrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("taskTrayIcon.Icon")));
-			this.taskTrayIcon.Text = "WFilingCase3";
+			this.taskTrayIcon.Text = "FilingCase3";
 			// 
 			// ttiMenu
 			// 
 			this.ttiMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.サービスEToolStripMenuItem,
-            this.設定SToolStripMenuItem,
+            this.設定ToolStripMenuItem,
+            this.再起動ToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.終了XToolStripMenuItem});
+            this.終了ToolStripMenuItem});
 			this.ttiMenu.Name = "TTIMenu";
-			this.ttiMenu.Size = new System.Drawing.Size(142, 76);
+			this.ttiMenu.Size = new System.Drawing.Size(153, 98);
 			// 
-			// 終了XToolStripMenuItem
+			// 設定ToolStripMenuItem
 			// 
-			this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
-			this.終了XToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-			this.終了XToolStripMenuItem.Text = "終了(&X)";
-			this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
+			this.設定ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ポート番号ToolStripMenuItem,
+            this.データディレクトリToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.詳細設定ToolStripMenuItem});
+			this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
+			this.設定ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.設定ToolStripMenuItem.Text = "設定";
+			// 
+			// ポート番号ToolStripMenuItem
+			// 
+			this.ポート番号ToolStripMenuItem.Name = "ポート番号ToolStripMenuItem";
+			this.ポート番号ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.ポート番号ToolStripMenuItem.Text = "ポート番号";
+			this.ポート番号ToolStripMenuItem.Click += new System.EventHandler(this.ポート番号ToolStripMenuItem_Click);
+			// 
+			// データディレクトリToolStripMenuItem
+			// 
+			this.データディレクトリToolStripMenuItem.Name = "データディレクトリToolStripMenuItem";
+			this.データディレクトリToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.データディレクトリToolStripMenuItem.Text = "データ ディレクトリ";
+			this.データディレクトリToolStripMenuItem.Click += new System.EventHandler(this.データディレクトリToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem2
+			// 
+			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(185, 6);
+			// 
+			// 詳細設定ToolStripMenuItem
+			// 
+			this.詳細設定ToolStripMenuItem.Name = "詳細設定ToolStripMenuItem";
+			this.詳細設定ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.詳細設定ToolStripMenuItem.Text = "詳細設定";
+			this.詳細設定ToolStripMenuItem.Click += new System.EventHandler(this.詳細設定ToolStripMenuItem_Click);
+			// 
+			// 再起動ToolStripMenuItem
+			// 
+			this.再起動ToolStripMenuItem.Name = "再起動ToolStripMenuItem";
+			this.再起動ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.再起動ToolStripMenuItem.Text = "再起動";
+			this.再起動ToolStripMenuItem.Click += new System.EventHandler(this.再起動ToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem1
+			// 
+			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+			// 
+			// 終了ToolStripMenuItem
+			// 
+			this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
+			this.終了ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.終了ToolStripMenuItem.Text = "終了";
+			this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
 			// 
 			// mainTimer
 			// 
 			this.mainTimer.Enabled = true;
 			this.mainTimer.Interval = 2000;
 			this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
-			// 
-			// 設定SToolStripMenuItem
-			// 
-			this.設定SToolStripMenuItem.Name = "設定SToolStripMenuItem";
-			this.設定SToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-			this.設定SToolStripMenuItem.Text = "設定(&S)";
-			// 
-			// toolStripMenuItem1
-			// 
-			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(138, 6);
-			// 
-			// サービスEToolStripMenuItem
-			// 
-			this.サービスEToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.再起動SToolStripMenuItem,
-            this.停止TToolStripMenuItem});
-			this.サービスEToolStripMenuItem.Name = "サービスEToolStripMenuItem";
-			this.サービスEToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-			this.サービスEToolStripMenuItem.Text = "サービス(&E)";
-			// 
-			// 再起動SToolStripMenuItem
-			// 
-			this.再起動SToolStripMenuItem.Name = "再起動SToolStripMenuItem";
-			this.再起動SToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.再起動SToolStripMenuItem.Text = "再起動(&S)";
-			// 
-			// 停止TToolStripMenuItem
-			// 
-			this.停止TToolStripMenuItem.Name = "停止TToolStripMenuItem";
-			this.停止TToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.停止TToolStripMenuItem.Text = "停止(&T)";
 			// 
 			// MainWin
 			// 
@@ -129,13 +148,15 @@
 
 		private System.Windows.Forms.NotifyIcon taskTrayIcon;
 		private System.Windows.Forms.ContextMenuStrip ttiMenu;
-		private System.Windows.Forms.ToolStripMenuItem 終了XToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 終了ToolStripMenuItem;
 		private System.Windows.Forms.Timer mainTimer;
-		private System.Windows.Forms.ToolStripMenuItem 設定SToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-		private System.Windows.Forms.ToolStripMenuItem サービスEToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem 再起動SToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem 停止TToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 設定ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ポート番号ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 再起動ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 詳細設定ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem データディレクトリToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
 	}
 }
 

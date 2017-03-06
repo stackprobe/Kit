@@ -51,7 +51,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusyDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusyDlg.Designer.cs">
+      <DependentUpon>BusyDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consts.cs" />
+    <Compile Include="CTools.cs" />
+    <Compile Include="PortNoDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PortNoDlg.Designer.cs">
+      <DependentUpon>PortNoDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelayDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelayDlg.Designer.cs">
+      <DependentUpon>RelayDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RootDirDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RootDirDlg.Designer.cs">
+      <DependentUpon>RootDirDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServerProc.cs" />
     <Compile Include="GlobalProcMtx.cs" />
     <Compile Include="Ground.cs" />
     <Compile Include="MainWin.cs">
@@ -62,6 +88,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingDlg.Designer.cs">
+      <DependentUpon>SettingDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\ArgsReader.cs" />
     <Compile Include="Tools\ArrayTools.cs" />
     <Compile Include="Tools\AutoTable.cs" />
@@ -86,10 +118,17 @@
     <Compile Include="Tools\Rect.cs" />
     <Compile Include="Tools\RectTable.cs" />
     <Compile Include="Tools\StringTools.cs" />
+    <Compile Include="Tools\WorkingDir.cs" />
     <Compile Include="Tools\XNode.cs" />
     <Compile Include="Tools\XYPoint.cs" />
+    <EmbeddedResource Include="BusyDlg.resx">
+      <DependentUpon>BusyDlg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWin.resx">
       <DependentUpon>MainWin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PortNoDlg.resx">
+      <DependentUpon>PortNoDlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,6 +140,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RelayDlg.resx">
+      <DependentUpon>RelayDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RootDirDlg.resx">
+      <DependentUpon>RootDirDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingDlg.resx">
+      <DependentUpon>SettingDlg.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
