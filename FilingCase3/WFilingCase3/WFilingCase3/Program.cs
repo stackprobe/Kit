@@ -31,10 +31,12 @@ namespace Charlotte
 
 				for (; ; )
 				{
+#if false
 					if (args.argIs("/dummy"))
 					{
 						continue;
 					}
+#endif
 					if (args.argIs("/S"))
 					{
 						using (NamedEventObject ev = new NamedEventObject(Consts.EV_STOP))
