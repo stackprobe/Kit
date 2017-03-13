@@ -90,11 +90,18 @@ namespace Charlotte
 						{
 							string dir = fbd.SelectedPath;
 
-							dir = Gnd.i.cTools.toFairFullPath(dir);
+							try
+							{
+								dir = Gnd.i.cTools.toFairFullPath(dir);
+							}
+							catch (Exception ex)
+							{
+								throw new FaultOperation("旧 Windows 系ファイルシステムで問題を起こす可能性のあるパスは使用出来ません。", ex);
+							}
 
 							if (100 < StringTools.ENCODING_SJIS.GetBytes(dir).Length)
 							{
-								throw new Exception("パスが長すぎます。\nShift_JIS で 100 バイト以下になるようにして下さい。");
+								throw new FaultOperation("パスが長すぎます。\nShift_JIS で 100 バイト以下になるようにして下さい。");
 							}
 							txtRootDir.Text = dir;
 						}

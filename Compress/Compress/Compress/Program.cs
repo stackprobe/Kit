@@ -36,7 +36,6 @@ namespace Compress
 						using (FileStream wfs = new FileStream(wFile, FileMode.Create, FileAccess.Write))
 						using (GZipStream gzs = new GZipStream(wfs, CompressionMode.Compress))
 						{
-							//CopyTo(rfs, gzs); // あんま変わらん..
 							rfs.CopyTo(gzs);
 						}
 						break;
@@ -46,7 +45,6 @@ namespace Compress
 						using (FileStream wfs = new FileStream(wFile, FileMode.Create, FileAccess.Write))
 						using (GZipStream gzs = new GZipStream(rfs, CompressionMode.Decompress))
 						{
-							//CopyTo(gzs, wfs); // あんま変わらん..
 							gzs.CopyTo(wfs);
 						}
 						break;
@@ -61,24 +59,5 @@ namespace Compress
 				throw e;
 			}
 		}
-
-#if false
-		private const int BUFF_SIZE = 128 * 1024 * 1024;
-
-		private static void CopyTo(Stream rs, Stream ws)
-		{
-			byte[] buff = new byte[BUFF_SIZE];
-
-			for (; ; )
-			{
-				int readSize = rs.Read(buff, 0, BUFF_SIZE);
-
-				if (readSize <= 0)
-					break;
-
-				ws.Write(buff, 0, readSize);
-			}
-		}
-#endif
 	}
 }
