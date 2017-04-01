@@ -1,16 +1,16 @@
 ----
 コマンド
 
-	HGet.exe [/P (DIRECT | IE | SPECIAL PROXY-HOST PROXY-PORT)] [/T TIMEOUT-MILLIS]
-	         [/M (HEAD | GET | POST)] [/U URL] [/V (10 | 11)]
-	         [/H HEADER-FIELD-NAME HEADER-FIELD-VALUE] ...
-	         [/B BODY-STRING | /BF BODY-FILE]
-	         [/F BODY-2-FILE]
-	         [/T BODY-3-STRING | /TF BODY-3-FILE]
-	         [/RSF SUCCESSFULE-FILE] [/RHF RES-HEADER-FIELDS-FILE] [/RBF RES-BODY-FILE] [/RBFX RES-BODY-FILE-SIZE-MAX]
+	HGet.exe [/P (DIRECT | IE | SPECIAL proxy-host proxy-port)] [/T timeout-millis]
+	         [/M (HEAD | GET | POST)] [/U url] [/V (10 | 11)]
+	         [/H header-field-name header-field-value] ...
+	         [/B body-string | /BF body-file]
+	         [/F body-2-file]
+	         [/T body-3-string | /TF body-3-file]
+	         [/RSF successfule-file] [/RHF res-header-fields-file] [/RBF res-body-file] [/RBFX res-body-file-size-max]
 			 [/K | /K-]
 	         [/-]
-	         [URL | URL BODY-FILE]
+	         [url | url body-file]
 
 		/K  ... 終了時キー待ち。
 		/K- ... エラー終了時キー待ち。
@@ -18,6 +18,6 @@
 ----
 コマンド引数をファイルで指定する。
 
-	HGet.exe //R ARGS-FILE
+	HGet.exe //R args-file
 
-		ARGS-FILE ... コマンド引数を行毎に記述する。文字コードは Shift_JIS
+		args-file ... コマンド引数を行毎に記述する。文字コードは Shift_JIS

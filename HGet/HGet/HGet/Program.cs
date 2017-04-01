@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Net;
+using System.Reflection;
 
 namespace HGet
 {
@@ -82,15 +83,23 @@ namespace HGet
 		private static byte[] _body = null; // null == no body
 		private static string _bodyFile = null; // null == no body-2
 		private static byte[] _bodyTrailer = null; // null == no body-3
-		private static string _successfulFile = @"C:\temp\HGet_successful.flg";
-		private static string _resHeaderFieldsFile = @"C:\temp\HGet_resHeaderFields.txt";
-		private static string _resBodyFile = @"C:\temp\HGet_resBody.dat";
+		private static string _successfulFile;
+		private static string _resHeaderFieldsFile;
+		private static string _resBodyFile;
 		private static long _resBodyFileSizeMax = 20000000L; // 20 MB
 		private static bool _endKeyWait = false;
 		private static bool _errorKeyWait = false;
 
 		private static void Main2(string[] args)
 		{
+			{
+				string dir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+
+				_successfulFile = Path.Combine(dir, "HGet_successful.flg");
+				_resHeaderFieldsFile = Path.Combine(dir, "HGet_resHeaderFields.txt");
+				_resBodyFile = Path.Combine(dir, "HGet_resBody.dat");
+			}
+
 			Queue<string> argq = new Queue<string>(args);
 
 			while (ArgIs(argq, "/-") == false)
