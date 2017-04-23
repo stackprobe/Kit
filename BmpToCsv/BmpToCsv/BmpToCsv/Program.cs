@@ -22,10 +22,37 @@ namespace BmpToCsv
 			}
 		}
 
+		private int JpegQuality = -1; // -1 == 無効, 0～100
+
 		private void Main2(string[] args)
 		{
-			string rFile = args[0];
-			string wFile = args[1];
+			Queue<string> argq = new Queue<string>(args);
+
+			for (; ; )
+			{
+				string arg = argq.Peek().ToUpper();
+
+				if (arg == "/-")
+				{
+					argq.Dequeue();
+					break;
+				}
+				if (arg == "/J")
+				{
+					argq.Dequeue();
+					int q = int.Parse(argq.Dequeue());
+
+					if (q < 0 || 100 < q)
+						throw new ArgumentOutOfRangeException();
+
+					this.JpegQuality = q;
+					continue;
+				}
+				// ここへ追加..
+				break;
+			}
+			string rFile = argq.Dequeue();
+			string wFile = argq.Dequeue();
 
 			if (this.IsCsvPath(rFile)) // ? csv ->
 			{
@@ -124,8 +151,27 @@ namespace BmpToCsv
 						bmp.SetPixel(colidx, rowidx, dot);
 					}
 				}
-				bmp.Save(wFile, this.PathToImageFormat(wFile));
+				ImageFormat imgFmt = this.PathToImageFormat(wFile);
+
+				if (imgFmt == ImageFormat.Jpeg && this.JpegQuality != -1)
+				{
+					Console.WriteLine("JpegQuality: " + this.JpegQuality);
+
+					EncoderParameters eps = new EncoderParameters(1);
+					eps.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, (long)this.JpegQuality);
+					ImageCodecInfo ici = GetICI(imgFmt);
+					bmp.Save(wFile, ici, eps);
+				}
+				else
+				{
+					bmp.Save(wFile, imgFmt);
+				}
 			}
+		}
+
+		private ImageCodecInfo GetICI(ImageFormat imgFmt)
+		{
+			return (from ici in ImageCodecInfo.GetImageEncoders() where ici.FormatID == imgFmt.Guid select ici).ToList()[0];
 		}
 
 		private ImageFormat PathToImageFormat(string path)
