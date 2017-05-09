@@ -95,9 +95,16 @@ namespace HGet
 			{
 				string dir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
-				_successfulFile = Path.Combine(dir, "HGet_successful.flg");
-				_resHeaderFieldsFile = Path.Combine(dir, "HGet_resHeaderFields.txt");
-				_resBodyFile = Path.Combine(dir, "HGet_resBody.dat");
+				_successfulFile = Path.Combine(dir, "HGet_successfulFlag.tmp");
+				_resHeaderFieldsFile = Path.Combine(dir, "HGet_resHeaderFields.tmp");
+				_resBodyFile = Path.Combine(dir, "HGet_resBody.tmp");
+			}
+
+			// clear *.tmp
+			{
+				File.Delete(_successfulFile);
+				File.Delete(_resHeaderFieldsFile);
+				File.Delete(_resBodyFile);
 			}
 
 			Queue<string> argq = new Queue<string>(args);
