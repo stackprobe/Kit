@@ -75,7 +75,9 @@ namespace HGet
 		private static ProxyMode_e _proxyMode = ProxyMode_e.IE;
 		private static string _proxyHost = "localhost";
 		private static int _proxyPort = 8080;
-		private static int _timeoutMillis = 30000;
+		private static int _connectionTimeoutMillis = 20000; // 応答ヘッダを受信するまでのタイムアウト
+		private static int _timeoutMillis = 30000; // 全て送受信し終えるまでのタイムアウト
+		private static int _noTrafficTimeoutMillis = 15000; // 無通信タイムアウト
 		private static Method_e _method = Method_e.GET;
 		private static string _url = "http://localhost/";
 		private static Version_e _version = Version_e.HTTP_11;
@@ -134,9 +136,19 @@ namespace HGet
 					}
 					continue;
 				}
-				if (ArgIs(argq, "/T"))
+				if (ArgIs(argq, "/CT"))
+				{
+					_connectionTimeoutMillis = int.Parse(argq.Dequeue());
+					continue;
+				}
+				if (ArgIs(argq, "/To"))
 				{
 					_timeoutMillis = int.Parse(argq.Dequeue());
+					continue;
+				}
+				if (ArgIs(argq, "/NTT"))
+				{
+					_noTrafficTimeoutMillis = int.Parse(argq.Dequeue());
 					continue;
 				}
 				if (ArgIs(argq, "/M"))
@@ -273,6 +285,8 @@ namespace HGet
 			}
 
 			HttpWebRequest hwr = (HttpWebRequest)HttpWebRequest.Create(_url);
+			DateTime startedTime = DateTime.Now;
+			TimeSpan timeoutSpan = TimeSpan.FromMilliseconds(_timeoutMillis);
 
 			switch (_proxyMode)
 			{
@@ -292,7 +306,7 @@ namespace HGet
 				default:
 					throw null;
 			}
-			hwr.Timeout = _timeoutMillis;
+			hwr.Timeout = _connectionTimeoutMillis;
 
 			switch (_method)
 			{
@@ -416,6 +430,8 @@ namespace HGet
 				using (Stream r = res.GetResponseStream())
 				using (FileStream fs = new FileStream(_resBodyFile, FileMode.Create, FileAccess.Write))
 				{
+					r.ReadTimeout = _noTrafficTimeoutMillis; // この時間経過すると r.Read() が例外を投げる。
+
 					byte[] buff = new byte[20000000]; // 20 MB
 					long totalSize = 0L;
 
@@ -425,6 +441,9 @@ namespace HGet
 
 						if (readSize <= 0)
 							break;
+
+						if (timeoutSpan < DateTime.Now - startedTime)
+							throw new Exception("Response timed out");
 
 						totalSize += readSize;
 

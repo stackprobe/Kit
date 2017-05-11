@@ -1,7 +1,7 @@
 ----
 ƒRƒ}ƒ“ƒh
 
-	HGet.exe [/P (DIRECT | IE | SPECIAL proxy-host proxy-port)] [/T timeout-millis]
+	HGet.exe [/P (DIRECT | IE | SPECIAL proxy-host proxy-port)] [/To timeout-millis]
 	         [/M (HEAD | GET | POST)] [/U url] [/V (10 | 11)]
 	         [/H header-field-name header-field-value] ...
 	         [/B body-string | /BF body-file]
