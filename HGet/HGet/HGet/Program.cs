@@ -75,9 +75,9 @@ namespace HGet
 		private static ProxyMode_e _proxyMode = ProxyMode_e.IE;
 		private static string _proxyHost = "localhost";
 		private static int _proxyPort = 8080;
-		private static int _connectionTimeoutMillis = 20000; // 応答ヘッダを受信するまでのタイムアウト
-		private static int _timeoutMillis = 30000; // 全て送受信し終えるまでのタイムアウト
-		private static int _noTrafficTimeoutMillis = 15000; // 無通信タイムアウト
+		private static int _connectionTimeoutMillis = 20000; // 接続開始から、応答ヘッダを受信し終えるまでのタイムアウト
+		private static int _timeoutMillis = 30000;           // 接続開始から、全て通信し終えるまでのタイムアウト
+		private static int _noTrafficTimeoutMillis = 15000;  // 応答ボディ受信中の無通信タイムアウト
 		private static Method_e _method = Method_e.GET;
 		private static string _url = "http://localhost/";
 		private static Version_e _version = Version_e.HTTP_11;
