@@ -16,6 +16,6 @@ C:\Factory\Tools\zcp.exe out C:\app\Kit\FilingCase3
 C:\Factory\SubTools\zip.exe /O out FilingCase3
 COPY out\FilingCase3.zip S:\_kit
 C:\Factory\SubTools\nrun.exe /s mimiko syncKit
-COPY out\FilingCase3.zip S:\_hidden\release\Kit
+COPY out\FilingCase3.zip S:\_release\Kit
 
 PAUSE

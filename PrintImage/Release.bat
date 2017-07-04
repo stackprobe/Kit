@@ -7,6 +7,6 @@ C:\Factory\Tools\zcp.exe out C:\app\Kit\PrintImage
 C:\Factory\SubTools\zip.exe /O out PrintImage
 COPY out\PrintImage.zip S:\_kit
 C:\Factory\SubTools\nrun.exe /s mimiko syncKit
-COPY out\PrintImage.zip S:\_hidden\release\Kit
+COPY out\PrintImage.zip S:\_release\Kit
 
 PAUSE
