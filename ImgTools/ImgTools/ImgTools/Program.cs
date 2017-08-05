@@ -221,6 +221,12 @@ namespace ImgTools
 
 					continue;
 				}
+				if (ar.ArgIs("/PLAINS"))
+				{
+					_img.SetDotAll(Consts.DummyDot);
+
+					continue;
+				}
 				if (ar.ArgIs("/PLAIN"))
 				{
 					int w = int.Parse(ar.NextArg());
