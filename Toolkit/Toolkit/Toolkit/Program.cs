@@ -51,6 +51,21 @@ namespace Toolkit
 					}
 					continue;
 				}
+				if (EqualsIgnoreCase(argq.Peek(), "/IMG-TO-IMG"))
+				{
+					argq.Dequeue();
+					string rFile = argq.Dequeue();
+					string wFile = argq.Dequeue();
+					int q = -1;
+
+					if (1 <= argq.Count)
+						q = int.Parse(argq.Dequeue()); // 0 ～ 100
+
+					new ImgToImg().Perform(rFile, wFile, q);
+
+					continue;
+				}
+				// ここへ追加..
 				throw new Exception("不明なオプション：" + argq.Peek());
 			}
 		}
