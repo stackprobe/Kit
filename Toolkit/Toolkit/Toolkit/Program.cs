@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Diagnostics;
 
 namespace Toolkit
 {
@@ -64,6 +65,26 @@ namespace Toolkit
 					new ImgToImg().Perform(rFile, wFile, q);
 
 					continue;
+				}
+				if (EqualsIgnoreCase(argq.Peek(), "/EVENT-LOG"))
+				{
+					// fixme -- 使うようになったら直そう...
+					foreach (var el in EventLog.GetEventLogs())
+					{
+						foreach (EventLogEntry ele in el.Entries)
+						{
+							DateTime dt = ele.TimeGenerated;
+
+							Console.WriteLine(
+								dt.Year + "," +
+								dt.Month + "," +
+								dt.Day + "," +
+								dt.Hour + "," +
+								dt.Minute + "," +
+								dt.Second
+								);
+						}
+					}
 				}
 				// ここへ追加..
 				throw new Exception("不明なオプション：" + argq.Peek());

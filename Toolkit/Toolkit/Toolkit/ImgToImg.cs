@@ -45,6 +45,11 @@ namespace Toolkit
 			return (from ici in ImageCodecInfo.GetImageEncoders() where ici.FormatID == imgFmt.Guid select ici).ToList()[0];
 		}
 
+		/// <summary>
+		/// from C:\Dev\Kit\BmpToCsv\BmpToCsv\BmpToCsv\Program.cs @ 2017.8.9
+		/// </summary>
+		/// <param name="path"></param>
+		/// <returns></returns>
 		private ImageFormat PathToImageFormat(string path)
 		{
 			switch (Path.GetExtension(path).ToLower())
