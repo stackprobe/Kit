@@ -1,23 +1,23 @@
 Kit
 ===
 
-C#�ŏ������c�[���̊񂹏W�߂ł��B
-�e�t�H���_������ doc �t�H���_�̉��� Readme.txt ������܂��B
-���s�`���͈ȉ��̏ꏊ����_�E�����[�h�ł��܂��B
+C#で書いたツールの寄せ集めです。
+各フォルダ直下の doc フォルダの下に Readme.txt があります。
+実行形式は以下の場所からダウンロードできます。
 
 	http://stackprobe.dip.jp/_kit
 
 
-�J����
+開発環境
 --------
 
 	Windows 7 Home Premium
 	Visual C# 2010 Express
 
-	���̃t�@�C���̏ꏊ�� C:\Dev\Kit\Readme.txt �ł��B
+	このファイルの場所は C:\Dev\Kit\Readme.txt です。
 
 
-�⑫
+補足
 ----
 
-	�R�}���h�����͑啶���E����������ʂ��Ȃ��Bex. /A == /a
+	コマンド引数は大文字・小文字を区別しない。ex. /A == /a
