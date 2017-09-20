@@ -35,19 +35,27 @@ namespace Toolkit
 					argq.Dequeue();
 					string rFile = argq.Dequeue();
 					string wFile = argq.Dequeue();
+					byte[] hash;
 
+					using (SHA512 sha512 = SHA512.Create())
+					using (FileStream fs = new FileStream(rFile, FileMode.Open, FileAccess.Read))
+					{
+						hash = sha512.ComputeHash(fs);
+					}
 					using (Image img = Image.FromFile(rFile))
 					using (Bitmap bmp = new Bitmap(img))
 					using (Graphics g = Graphics.FromImage(bmp))
 					{
 						g.FillRectangle(
-							new LinearGradientBrush(new Point(0, 0), new Point(bmp.Width, bmp.Height), Color.DarkRed, Color.White),
+							new LinearGradientBrush(new Point(0, 0), new Point(bmp.Width, bmp.Height), Color.DarkGray, Color.DarkOrange),
 							0,
 							0,
 							bmp.Width,
 							bmp.Height
 							);
-						//g.FillRectangle(Brushes.White, 0, 0, bmp.Width, bmp.Height);
+						//g.FillRectangle(Brushes.White, 0, 0, bmp.Width, bmp.Height); // 単色
+
+						DrawCode(g, bmp.Width, bmp.Height, hash);
 						bmp.Save(wFile);
 					}
 					continue;
@@ -88,6 +96,19 @@ namespace Toolkit
 				}
 				// ここへ追加..
 				throw new Exception("不明なオプション：" + argq.Peek());
+			}
+		}
+
+		private void DrawCode(Graphics g, int gw, int gh, byte[] hash)
+		{
+			int dh = Math.Min(10, gh);
+
+			for (int i = 0; i / 8 < hash.Length && i < gw; i++)
+			{
+				bool bit = (hash[i / 8] & (1 << (i % 8))) != 0;
+
+				if (bit)
+					g.DrawLine(new Pen(Color.Orange), new Point(i, 0), new Point(i, dh));
 			}
 		}
 
