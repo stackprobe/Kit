@@ -35,10 +35,11 @@ namespace Toolkit
 					argq.Dequeue();
 					string rFile = argq.Dequeue();
 					string wFile = argq.Dequeue();
+					string hashRFile = 1 <= argq.Count ? argq.Dequeue() : rFile;
 					byte[] hash;
 
 					using (SHA512 sha512 = SHA512.Create())
-					using (FileStream fs = new FileStream(rFile, FileMode.Open, FileAccess.Read))
+					using (FileStream fs = new FileStream(hashRFile, FileMode.Open, FileAccess.Read))
 					{
 						hash = sha512.ComputeHash(fs);
 					}
