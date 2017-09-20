@@ -47,7 +47,12 @@ namespace Toolkit
 					using (Graphics g = Graphics.FromImage(bmp))
 					{
 						g.FillRectangle(
-							new LinearGradientBrush(new Point(0, 0), new Point(bmp.Width, bmp.Height), Color.DarkGray, Color.DarkOrange),
+							new LinearGradientBrush(
+								new Point(0, 0),
+								new Point(bmp.Width, bmp.Height),
+								Color.FromArgb(255, 64, 32, 0),
+								Color.FromArgb(255, 128, 64, 0)
+								),
 							0,
 							0,
 							bmp.Width,
@@ -108,7 +113,7 @@ namespace Toolkit
 				bool bit = (hash[i / 8] & (1 << (i % 8))) != 0;
 
 				if (bit)
-					g.DrawLine(new Pen(Color.Orange), new Point(i, 0), new Point(i, dh));
+					g.DrawLine(new Pen(Color.FromArgb(255, 255, 128, 0)), new Point(i, 0), new Point(i, dh));
 			}
 		}
 
