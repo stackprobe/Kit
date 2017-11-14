@@ -15,8 +15,7 @@ C:\Factory\SubTools\EmbedConfig.exe --factory-dir-disabled out\CTools.exe
 C:\Factory\Tools\zcp.exe out C:\app\Kit\FilingCase3
 C:\Factory\SubTools\zip.exe /O out FilingCase3
 COPY out\FilingCase3.zip S:\_kit
-CALL C:\home\bat\env\env.bat
-C:\Factory\SubTools\nrun.exe /s %mimiko% syncKit
+CALL C:\home\bat\syncKit.bat
 COPY out\FilingCase3.zip S:\_release\Kit
 
 PAUSE

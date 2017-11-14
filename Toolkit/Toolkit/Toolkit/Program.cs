@@ -82,23 +82,37 @@ namespace Toolkit
 				}
 				if (EqualsIgnoreCase(argq.Peek(), "/EVENT-LOG"))
 				{
-					// fixme -- 使うようになったら直そう...
-					foreach (var el in EventLog.GetEventLogs())
-					{
-						foreach (EventLogEntry ele in el.Entries)
-						{
-							DateTime dt = ele.TimeGenerated;
+					argq.Dequeue();
+					long dtMin = long.Parse(argq.Dequeue());
+					long dtMax = long.Parse(argq.Dequeue());
+					bool messageOn = int.Parse(argq.Dequeue()) != 0;
+					string wFile = argq.Dequeue();
 
-							Console.WriteLine(
-								dt.Year + "," +
-								dt.Month + "," +
-								dt.Day + "," +
-								dt.Hour + "," +
-								dt.Minute + "," +
-								dt.Second
-								);
+					using (CsvFileWriter writer = new CsvFileWriter(wFile))
+					{
+						foreach (var el in EventLog.GetEventLogs())
+						{
+							foreach (EventLogEntry ele in el.Entries)
+							{
+								long dt = ToLong(ele.TimeGenerated);
+
+								if (dtMin <= dt && dt <= dtMax)
+								{
+									List<string> row = new List<string>();
+
+									row.Add("" + dt); // 日付と時刻
+									row.Add("" + GetLevel(ele.EntryType)); // レベル
+									row.Add("" + ele.Source); // ソース
+
+									if (messageOn)
+										row.Add("" + ele.Message);
+
+									writer.writeRow(row.ToArray());
+								}
+							}
 						}
 					}
+					continue;
 				}
 				// ここへ追加..
 				throw new Exception("不明なオプション：" + argq.Peek());
@@ -121,6 +135,40 @@ namespace Toolkit
 		private bool EqualsIgnoreCase(string a, string b)
 		{
 			return a.ToLower() == b.ToLower();
+		}
+
+		private long ToLong(DateTime dt)
+		{
+			int y = dt.Year;
+			int m = dt.Month;
+			int d = dt.Day;
+			int h = dt.Hour;
+			int i = dt.Minute;
+			int s = dt.Second;
+
+			return
+				y * 10000000000L +
+				m * 100000000L +
+				d * 1000000L +
+				h * 10000L +
+				i * 100L +
+				s;
+		}
+
+		private string GetLevel(EventLogEntryType type)
+		{
+			switch (type)
+			{
+				case EventLogEntryType.Error: return "エラー";
+				case EventLogEntryType.FailureAudit: return "失敗の監査";
+				case EventLogEntryType.Information: return "情報";
+				case EventLogEntryType.SuccessAudit: return "成功の監査";
+				case EventLogEntryType.Warning: return "警告";
+
+				default:
+					break;
+			}
+			return "" + (int)type;
 		}
 	}
 }
