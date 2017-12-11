@@ -82,6 +82,7 @@
 			this.Shown += new System.EventHandler(this.MainWin_Shown);
 			this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainWin_DragDrop);
 			this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainWin_DragEnter);
+			this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainWin_KeyPress);
 			this.Resize += new System.EventHandler(this.MainWin_Resize);
 			this.ResumeLayout(false);
 			this.PerformLayout();

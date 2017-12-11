@@ -29,6 +29,22 @@ namespace WDrop
 
 		private void MainWin_Shown(object sender, EventArgs e)
 		{
+			{
+				int l = int.MaxValue;
+				int t = 0;
+
+				foreach (Screen s in Screen.AllScreens)
+				{
+					if (s.Bounds.Left < l)
+					{
+						l = s.Bounds.Left;
+						t = s.Bounds.Top;
+					}
+				}
+				this.Left = l;
+				this.Top = t;
+			}
+
 			this.MainWin_Resize(null, null);
 			this.MainTimer.Enabled = true;
 		}
@@ -96,6 +112,9 @@ namespace WDrop
 
 		private void MainTimer_Tick(object sender, EventArgs e)
 		{
+			if (Gnd.I.ParentAliveMutexName == "Test")
+				return;
+
 			try
 			{
 				using (Mutex mutex = new Mutex(false, Gnd.I.ParentAliveMutexName))
@@ -108,6 +127,14 @@ namespace WDrop
 				}
 			}
 			catch
+			{
+				this.Close();
+			}
+		}
+
+		private void MainWin_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (e.KeyChar == (char)0x1b)
 			{
 				this.Close();
 			}
