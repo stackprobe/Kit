@@ -12,11 +12,20 @@ namespace Toolkit
 {
 	class Program
 	{
+		private static readonly Encoding ENCODING_SJIS = Encoding.GetEncoding(932);
+
 		static void Main(string[] args)
 		{
 			try
 			{
-				new Program().Main2(args);
+				if (1 <= args.Length && args[0].ToUpper() == "//R")
+				{
+					new Program().Main2(File.ReadAllLines(args[1], ENCODING_SJIS));
+				}
+				else
+				{
+					new Program().Main2(args);
+				}
 			}
 			catch (Exception e)
 			{
@@ -111,6 +120,55 @@ namespace Toolkit
 								}
 							}
 						}
+					}
+					continue;
+				}
+				if (EqualsIgnoreCase(argq.Peek(), "/MULTI-RUN"))
+				{
+					argq.Dequeue();
+					int mode = int.Parse(argq.Dequeue()); // (0, 1, 2) == (Hide, Min, Normal)
+					List<string> progFiles = new List<string>();
+
+					while (1 <= argq.Count)
+						progFiles.Add(argq.Dequeue());
+
+					List<Process> procs = new List<Process>();
+
+					foreach (string progFile in progFiles)
+					{
+						ProcessStartInfo psi = new ProcessStartInfo();
+
+						psi.FileName = progFile;
+						psi.Arguments = "";
+
+						switch (mode)
+						{
+							case 0: // Hide
+								psi.CreateNoWindow = true;
+								psi.UseShellExecute = false;
+								break;
+
+							case 1: // Min
+								psi.CreateNoWindow = false;
+								psi.UseShellExecute = true;
+								psi.WindowStyle = ProcessWindowStyle.Minimized;
+								break;
+
+							case 2: // Normal
+								break;
+
+							default:
+								throw null;
+						}
+						Console.WriteLine("1.1 " + progFile);
+						procs.Add(Process.Start(psi));
+						Console.WriteLine("1.2 " + procs[procs.Count - 1].Id);
+					}
+					foreach (Process proc in procs)
+					{
+						Console.WriteLine("2.1 " + proc.Id);
+						proc.WaitForExit();
+						Console.WriteLine("2.2");
 					}
 					continue;
 				}
