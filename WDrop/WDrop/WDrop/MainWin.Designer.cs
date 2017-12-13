@@ -34,6 +34,9 @@
 			this.Message = new System.Windows.Forms.Label();
 			this.MainTimer = new System.Windows.Forms.Timer(this.components);
 			this.TT = new System.Windows.Forms.ToolTip(this.components);
+			this.MainWinMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.閉じるXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MainWinMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// MainLabel
@@ -61,12 +64,27 @@
 			// 
 			this.MainTimer.Tick += new System.EventHandler(this.MainTimer_Tick);
 			// 
+			// MainWinMenu
+			// 
+			this.MainWinMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.閉じるXToolStripMenuItem});
+			this.MainWinMenu.Name = "MainWinMenu";
+			this.MainWinMenu.Size = new System.Drawing.Size(120, 26);
+			// 
+			// 閉じるXToolStripMenuItem
+			// 
+			this.閉じるXToolStripMenuItem.Name = "閉じるXToolStripMenuItem";
+			this.閉じるXToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+			this.閉じるXToolStripMenuItem.Text = "閉じる(&X)";
+			this.閉じるXToolStripMenuItem.Click += new System.EventHandler(this.閉じるXToolStripMenuItem_Click);
+			// 
 			// MainWin
 			// 
 			this.AllowDrop = true;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(284, 261);
+			this.ContextMenuStrip = this.MainWinMenu;
 			this.Controls.Add(this.Message);
 			this.Controls.Add(this.MainLabel);
 			this.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -84,6 +102,7 @@
 			this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainWin_DragEnter);
 			this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainWin_KeyPress);
 			this.Resize += new System.EventHandler(this.MainWin_Resize);
+			this.MainWinMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -95,6 +114,8 @@
 		private System.Windows.Forms.Label Message;
 		private System.Windows.Forms.Timer MainTimer;
 		private System.Windows.Forms.ToolTip TT;
+		private System.Windows.Forms.ContextMenuStrip MainWinMenu;
+		private System.Windows.Forms.ToolStripMenuItem 閉じるXToolStripMenuItem;
     }
 }
 

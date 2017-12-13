@@ -139,5 +139,10 @@ namespace WDrop
 				this.Close();
 			}
 		}
+
+		private void 閉じるXToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
 	}
 }
