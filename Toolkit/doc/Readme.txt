@@ -14,6 +14,6 @@
 		ex.
 			Toolkit /event-log 20170101000000 20181231235959 1 output.csv
 
-	Toolkit.exe /MULTI-RUN モード 実行ファイル...
+	Toolkit.exe /MULTI-RUN モード [実行ファイル...]
 
 		モード -- (0, 1, 2) == (Hide, Min, Normal)
