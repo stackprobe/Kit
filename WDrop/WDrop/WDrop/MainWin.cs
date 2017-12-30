@@ -134,7 +134,7 @@ namespace WDrop
 
 		private void MainWin_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if (e.KeyChar == (char)0x1b)
+			if (e.KeyChar == (char)0x1b) // escape
 			{
 				this.Close();
 			}
