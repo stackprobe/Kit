@@ -112,7 +112,7 @@ namespace WDrop
 
 		private void MainTimer_Tick(object sender, EventArgs e)
 		{
-			if (Gnd.I.ParentAliveMutexName == "Test")
+			if (Gnd.I.ParentAliveMutexName == "Test_{0ffd61b7-4555-423b-803f-3aa670666076}")
 				return;
 
 			try

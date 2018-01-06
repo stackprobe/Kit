@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <StartArguments>C:\Debug.exe 12345 Test C:\temp\WDrop_out.txt</StartArguments>
+    <StartArguments>C:\Programs\Debug.exe 12345 Test_{0ffd61b7-4555-423b-803f-3aa670666076} C:\temp\WDrop_out.txt</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <StartArguments>C:\Debug.exe 12345 Test C:\temp\WDrop_out.txt</StartArguments>
+    <StartArguments>C:\Programs\Debug.exe 12345 Test_{0ffd61b7-4555-423b-803f-3aa670666076} C:\temp\WDrop_out.txt</StartArguments>
   </PropertyGroup>
 </Project>
