@@ -17,3 +17,5 @@
 	Toolkit.exe /MULTI-RUN モード [実行ファイル...]
 
 		モード -- (0, 1, 2) == (Hide, Min, Normal)
+
+	Toolkit.exe /SHA-512 入力パス 出力ファイル

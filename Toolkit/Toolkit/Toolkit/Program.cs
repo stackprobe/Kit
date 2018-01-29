@@ -56,6 +56,8 @@ namespace Toolkit
 					using (Bitmap bmp = new Bitmap(img))
 					using (Graphics g = Graphics.FromImage(bmp))
 					{
+						// グラデーション
+						//*
 						g.FillRectangle(
 							new LinearGradientBrush(
 								new Point(0, 0),
@@ -68,7 +70,9 @@ namespace Toolkit
 							bmp.Width,
 							bmp.Height
 							);
+						//*/
 						//g.FillRectangle(Brushes.White, 0, 0, bmp.Width, bmp.Height); // 単色
+						//g.FillRectangle(Brushes.DarkRed, 0, 0, bmp.Width, bmp.Height); // 単色
 
 						DrawCode(g, bmp.Width, bmp.Height, hash);
 						bmp.Save(wFile);
@@ -172,6 +176,28 @@ namespace Toolkit
 					}
 					continue;
 				}
+				if (EqualsIgnoreCase(argq.Peek(), "/SHA-512"))
+				{
+					argq.Dequeue();
+					string path = argq.Dequeue();
+					string wFile = argq.Dequeue();
+
+					if (Directory.Exists(path))
+					{
+						string[] files = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
+						Array.Sort<string>(files);
+						OutputSHA512(files, wFile);
+					}
+					else if (File.Exists(path))
+					{
+						OutputSHA512(new string[] { path }, wFile);
+					}
+					else
+					{
+						throw new FileNotFoundException(path);
+					}
+					continue;
+				}
 				// ここへ追加..
 				throw new Exception("不明なオプション：" + argq.Peek());
 			}
@@ -187,6 +213,21 @@ namespace Toolkit
 
 				if (bit)
 					g.DrawLine(new Pen(Color.FromArgb(255, 255, 128, 0)), new Point(i, 0), new Point(i, dh));
+			}
+		}
+
+		private void OutputSHA512(string[] files, string wFile)
+		{
+			using (StreamWriter writer = new StreamWriter(wFile, false, ENCODING_SJIS))
+			using (SHA512 sha512 = SHA512.Create())
+			{
+				foreach (string file in files)
+				{
+					using (FileStream reader = new FileStream(file, FileMode.Open, FileAccess.Read))
+					{
+						writer.WriteLine(BitConverter.ToString(sha512.ComputeHash(reader)).Replace("-", "").ToLower() + " " + file);
+					}
+				}
 			}
 		}
 
