@@ -57,7 +57,7 @@ namespace Toolkit
 					using (Graphics g = Graphics.FromImage(bmp))
 					{
 						// グラデーション
-						//*
+						/*
 						g.FillRectangle(
 							new LinearGradientBrush(
 								new Point(0, 0),
@@ -70,9 +70,9 @@ namespace Toolkit
 							bmp.Width,
 							bmp.Height
 							);
-						//*/
+						*/
 						//g.FillRectangle(Brushes.White, 0, 0, bmp.Width, bmp.Height); // 単色
-						//g.FillRectangle(Brushes.DarkRed, 0, 0, bmp.Width, bmp.Height); // 単色
+						g.FillRectangle(Brushes.DarkRed, 0, 0, bmp.Width, bmp.Height); // 単色
 
 						DrawCode(g, bmp.Width, bmp.Height, hash);
 						bmp.Save(wFile);
