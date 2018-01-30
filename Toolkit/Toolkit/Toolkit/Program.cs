@@ -176,25 +176,35 @@ namespace Toolkit
 					}
 					continue;
 				}
+				if (EqualsIgnoreCase(argq.Peek(), "/MD5"))
+				{
+					using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+					{
+						OutputHashes(argq, (FileStream reader) => md5.ComputeHash(reader));
+					}
+					continue;
+				}
 				if (EqualsIgnoreCase(argq.Peek(), "/SHA-512"))
 				{
-					argq.Dequeue();
-					string path = argq.Dequeue();
-					string wFile = argq.Dequeue();
+					using (SHA512 sha512 = SHA512.Create())
+					{
+						OutputHashes(argq, (FileStream reader) => sha512.ComputeHash(reader));
+					}
+					continue;
+				}
+				if (EqualsIgnoreCase(argq.Peek(), "/SHA-512-128"))
+				{
+					using (SHA512 sha512 = SHA512.Create())
+					{
+						OutputHashes(argq, (FileStream reader) =>
+						{
+							byte[] hash = sha512.ComputeHash(reader);
+							byte[] hash16 = new byte[16];
 
-					if (Directory.Exists(path))
-					{
-						string[] files = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
-						Array.Sort<string>(files);
-						OutputSHA512(files, wFile);
-					}
-					else if (File.Exists(path))
-					{
-						OutputSHA512(new string[] { path }, wFile);
-					}
-					else
-					{
-						throw new FileNotFoundException(path);
+							Array.Copy(hash, hash16, 16);
+
+							return hash16;
+						});
 					}
 					continue;
 				}
@@ -216,16 +226,45 @@ namespace Toolkit
 			}
 		}
 
-		private void OutputSHA512(string[] files, string wFile)
+		private delegate byte[] ComputeHash(FileStream reader);
+
+		private void OutputHashes(Queue<string> argq, ComputeHash computeHash)
 		{
+			argq.Dequeue();
+			string path = argq.Dequeue();
+			string wFile = argq.Dequeue();
+
+			using (FileStream writer = new FileStream(wFile, FileMode.Create, FileAccess.Write)) // 書き込みテスト
+			{
+				writer.WriteByte(0x00);
+				writer.WriteByte(0x00);
+				writer.WriteByte(0x00);
+			}
+			File.Delete(wFile); // path がディレクトリで wFile が path の配下であった場合 files に含まれないように削除する。
+
+			string[] files;
+
+			if (Directory.Exists(path))
+			{
+				files = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
+				Array.Sort<string>(files);
+			}
+			else if (File.Exists(path))
+			{
+				files = new string[] { path };
+			}
+			else
+			{
+				throw new FileNotFoundException(path);
+			}
+
 			using (StreamWriter writer = new StreamWriter(wFile, false, ENCODING_SJIS))
-			using (SHA512 sha512 = SHA512.Create())
 			{
 				foreach (string file in files)
 				{
 					using (FileStream reader = new FileStream(file, FileMode.Open, FileAccess.Read))
 					{
-						writer.WriteLine(BitConverter.ToString(sha512.ComputeHash(reader)).Replace("-", "").ToLower() + " " + file);
+						writer.WriteLine(BitConverter.ToString(computeHash(reader)).Replace("-", "").ToLower() + " " + file);
 					}
 				}
 			}

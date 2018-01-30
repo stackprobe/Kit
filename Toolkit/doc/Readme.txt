@@ -18,4 +18,8 @@
 
 		モード -- (0, 1, 2) == (Hide, Min, Normal)
 
+	Toolkit.exe /MD5 入力パス 出力ファイル
+
 	Toolkit.exe /SHA-512 入力パス 出力ファイル
+
+	Toolkit.exe /SHA-512-128 入力パス 出力ファイル
