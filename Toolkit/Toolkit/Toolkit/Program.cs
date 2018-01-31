@@ -120,7 +120,7 @@ namespace Toolkit
 									if (messageOn)
 										row.Add("" + ele.Message);
 
-									writer.writeRow(row.ToArray());
+									writer.WriteRow(row.ToArray());
 								}
 							}
 						}
@@ -264,7 +264,9 @@ namespace Toolkit
 				{
 					using (FileStream reader = new FileStream(file, FileMode.Open, FileAccess.Read))
 					{
-						writer.WriteLine(BitConverter.ToString(computeHash(reader)).Replace("-", "").ToLower() + " " + file);
+						string line = BitConverter.ToString(computeHash(reader)).Replace("-", "").ToLower() + " " + file;
+						Console.WriteLine(line);
+						writer.WriteLine(line);
 					}
 				}
 			}

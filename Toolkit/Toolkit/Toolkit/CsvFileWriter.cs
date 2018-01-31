@@ -1,69 +1,84 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace Toolkit
 {
 	public class CsvFileWriter : IDisposable
 	{
+		private const char DELIMITER = ',';
+		//private const char DELIMITER = '\t';
+
+		private StreamWriter Writer;
+		private bool RowHead;
+
 		public CsvFileWriter(string file)
-			: this(file, Encoding.GetEncoding(932))
-		{ }
-
-		private StreamWriter _writer;
-
-		public CsvFileWriter(string file, Encoding encoding)
 		{
-			_writer = new StreamWriter(file, false, encoding);
+			this.Writer = new StreamWriter(file, false, Encoding.GetEncoding(932));
+			this.RowHead = true;
 		}
 
-		private const char DELIMITER = ',';
-		//private const char DELIMITER = '\t'; // TSL のとき
-
-		public void writeCell(string cell)
+		public void WriteCell(string cell)
 		{
+			if (this.RowHead)
+				this.RowHead = false;
+			else
+				this.Writer.Write(DELIMITER);
+
 			if (
+				cell.Contains('"') ||
 				cell.Contains('\n') ||
-				cell.Contains('\"') ||
 				cell.Contains(DELIMITER)
 				)
 			{
-				_writer.Write('"');
-				_writer.Write(cell.Replace("\"", "\"\""));
-				_writer.Write('"');
+				this.Writer.Write('"');
+				this.Writer.Write(cell.Replace("\"", "\"\""));
+				this.Writer.Write('"');
 			}
 			else
-				_writer.Write(cell);
+				this.Writer.Write(cell);
 		}
 
-		public void writeCellDelimiter()
+		public void EndRow()
 		{
-			_writer.Write(DELIMITER);
+			this.Writer.Write('\n');
+			this.RowHead = true;
 		}
 
-		public void writeNewLine()
+		public void WriteCells(string[] cells)
 		{
-			_writer.Write('\n');
-		}
-
-		public void writeRow(string[] row)
-		{
-			for (int index = 0; index < row.Length; index++)
+			foreach (string cell in cells)
 			{
-				if (1 <= index)
-					this.writeCellDelimiter();
-
-				this.writeCell(row[index]);
+				this.WriteCell(cell);
 			}
-			this.writeNewLine();
+		}
+
+		public void WriteRow(string[] row)
+		{
+			foreach (string cell in row)
+			{
+				this.WriteCell(cell);
+			}
+			this.EndRow();
+		}
+
+		public void WriteRows(string[][] rows)
+		{
+			foreach (string[] row in rows)
+			{
+				this.WriteRow(row);
+			}
 		}
 
 		public void Dispose()
 		{
-			_writer.Dispose();
-			_writer = null;
+			if (this.Writer != null)
+			{
+				this.Writer.Dispose();
+				this.Writer = null;
+			}
 		}
 	}
 }
