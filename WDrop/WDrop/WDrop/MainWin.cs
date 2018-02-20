@@ -32,6 +32,7 @@ namespace WDrop
 			{
 				int l = int.MaxValue;
 				int t = 0;
+				int w = 0;
 
 				foreach (Screen s in Screen.AllScreens)
 				{
@@ -39,9 +40,10 @@ namespace WDrop
 					{
 						l = s.Bounds.Left;
 						t = s.Bounds.Top;
+						w = s.Bounds.Width;
 					}
 				}
-				this.Left = l;
+				this.Left = l + w / 4;
 				this.Top = t;
 			}
 

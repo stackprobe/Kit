@@ -92,6 +92,7 @@
 			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.MinimumSize = new System.Drawing.Size(300, 300);
 			this.Name = "MainWin";
+			this.Opacity = 0.95D;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "<D>";
 			this.TopMost = true;
