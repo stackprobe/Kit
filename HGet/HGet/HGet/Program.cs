@@ -5,6 +5,8 @@ using System.Text;
 using System.IO;
 using System.Net;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 namespace HGet
 {
@@ -284,6 +286,10 @@ namespace HGet
 				File.Delete(_resBodyFile);
 			}
 
+			// どんな証明書も許可する。
+			ServicePointManager.ServerCertificateValidationCallback =
+				(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) => true;
+
 			HttpWebRequest hwr = (HttpWebRequest)HttpWebRequest.Create(_url);
 			DateTime startedTime = DateTime.Now;
 			TimeSpan timeoutSpan = TimeSpan.FromMilliseconds(_timeoutMillis);
@@ -338,6 +344,11 @@ namespace HGet
 				if (IsSameIgnoreCase(name, "User-Agent"))
 				{
 					hwr.UserAgent = value;
+					continue;
+				}
+				if (IsSameIgnoreCase(name, "Host"))
+				{
+					hwr.Host = value;
 					continue;
 				}
 				hwr.Headers.Add(name, value);
