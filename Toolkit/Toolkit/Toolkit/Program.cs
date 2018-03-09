@@ -264,12 +264,28 @@ namespace Toolkit
 				{
 					using (FileStream reader = new FileStream(file, FileMode.Open, FileAccess.Read))
 					{
-						string line = BitConverter.ToString(computeHash(reader)).Replace("-", "").ToLower() + " " + file;
+						string line = BitConverter.ToString(computeHash(reader)).Replace("-", "").ToLower() + " " + EraseRoot(file, path);
 						Console.WriteLine(line);
 						writer.WriteLine(line);
 					}
 				}
 			}
+		}
+
+		private string EraseRoot(string path, string root)
+		{
+			if (root.EndsWith("\\") == false)
+				root += "\\";
+
+			if (StartsWithIgnoreCase(path, root))
+				path = path.Substring(root.Length);
+
+			return path;
+		}
+
+		private bool StartsWithIgnoreCase(string a, string b)
+		{
+			return a.ToLower().StartsWith(b.ToLower());
 		}
 
 		private bool EqualsIgnoreCase(string a, string b)
