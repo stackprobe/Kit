@@ -85,13 +85,18 @@ namespace Charlotte
 
 			while (_proc.HasExited == false)
 			{
-				using (NamedEventObject ev = new NamedEventObject(Consts.EV_SERVER_STOP)) // 停止リクエスト
-				{
-					ev.set();
-				}
+				this.endKick();
 				Thread.Sleep(2000);
 			}
 			_proc = null;
+		}
+
+		public void endKick()
+		{
+			using (NamedEventObject ev = new NamedEventObject(Consts.EV_SERVER_STOP)) // 停止リクエスト
+			{
+				ev.set();
+			}
 		}
 
 		public bool isRunning()

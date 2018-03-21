@@ -66,6 +66,16 @@ namespace Charlotte
 				Gnd.i.iconServerRunning = new Icon(Gnd.i.getIconFile("app_16_11"));
 				Gnd.i.iconServerNotRunning = new Icon(Gnd.i.getIconFile("app_16_01"));
 
+				// Kill Zombies
+				{
+					Gnd.i.serverProc.endKick();
+					Thread.Sleep(100);
+					Gnd.i.serverProc.endKick();
+					Thread.Sleep(100);
+					Gnd.i.serverProc.endKick();
+					Thread.Sleep(100);
+				}
+
 				Gnd.i.serverProc.start();
 
 				// orig >
@@ -76,11 +86,7 @@ namespace Charlotte
 
 				// < orig
 
-				BusyDlg.perform(delegate
-				{
-					Gnd.i.serverProc.end();
-					Gnd.i.serverProc = null;
-				});
+				// ここではフォームを開けない -> MainWin.cs CloseWindow()
 
 				Gnd.i.saveData();
 

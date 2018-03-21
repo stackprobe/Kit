@@ -52,13 +52,28 @@ namespace Charlotte
 
 		private void MainWin_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			this.mtEnabled = false;
-			this.taskTrayIcon.Visible = false;
+			// noop
 		}
 
 		private void 終了ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			this.CloseWindow();
+		}
+
+		private void CloseWindow()
+		{
 			this.mtEnabled = false;
+			this.taskTrayIcon.Visible = false;
+
+			// プロセス終了時にすること
+			{
+				BusyDlg.perform(delegate
+				{
+					Gnd.i.serverProc.end();
+					Gnd.i.serverProc = null;
+				});
+			}
+
 			this.Close();
 		}
 
@@ -102,8 +117,7 @@ namespace Charlotte
 
 				if (Gnd.i.evStop.waitForMillis(0))
 				{
-					this.mtEnabled = false;
-					this.Close();
+					this.CloseWindow();
 					return;
 				}
 			}
