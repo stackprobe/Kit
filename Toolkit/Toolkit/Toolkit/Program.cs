@@ -39,6 +39,22 @@ namespace Toolkit
 
 			while (1 <= argq.Count)
 			{
+				if (EqualsIgnoreCase(argq.Peek(), "/MASK-RESOURCE-IMAGE-NBC"))
+				{
+					argq.Dequeue();
+					string rFile = argq.Dequeue();
+					string wFile = argq.Dequeue();
+
+					using (Image img = Image.FromFile(rFile))
+					using (Bitmap bmp = new Bitmap(img))
+					using (Graphics g = Graphics.FromImage(bmp))
+					{
+						g.FillRectangle(Brushes.DarkRed, 0, 0, bmp.Width, bmp.Height); // 単色
+
+						bmp.Save(wFile);
+					}
+					continue;
+				}
 				if (EqualsIgnoreCase(argq.Peek(), "/MASK-RESOURCE-IMAGE"))
 				{
 					argq.Dequeue();
