@@ -43,7 +43,7 @@ namespace WDrop
 						w = s.Bounds.Width;
 					}
 				}
-				this.Left = l + w / 4;
+				this.Left = l + w / 2;
 				this.Top = t;
 			}
 
