@@ -96,31 +96,16 @@
     </Compile>
     <Compile Include="Tools\ArgsReader.cs" />
     <Compile Include="Tools\ArrayTools.cs" />
-    <Compile Include="Tools\AutoTable.cs" />
     <Compile Include="Tools\BinaryTools.cs" />
-    <Compile Include="Tools\Bmp.cs" />
     <Compile Include="Tools\Cancelled.cs" />
     <Compile Include="Tools\Completed.cs" />
-    <Compile Include="Tools\CsvFile.cs" />
-    <Compile Include="Tools\DateTimeToSec.cs" />
-    <Compile Include="Tools\DateToDay.cs" />
-    <Compile Include="Tools\DoubleTools.cs" />
     <Compile Include="Tools\Ended.cs" />
     <Compile Include="Tools\FaultOperation.cs" />
     <Compile Include="Tools\FileTools.cs" />
     <Compile Include="Tools\IntTools.cs" />
-    <Compile Include="Tools\JString.cs" />
-    <Compile Include="Tools\LongTools.cs" />
-    <Compile Include="Tools\MutexObject.cs" />
     <Compile Include="Tools\NamedEventObject.cs" />
-    <Compile Include="Tools\NamedEventPair.cs" />
-    <Compile Include="Tools\Nectar2.cs" />
-    <Compile Include="Tools\Rect.cs" />
-    <Compile Include="Tools\RectTable.cs" />
     <Compile Include="Tools\StringTools.cs" />
     <Compile Include="Tools\WorkingDir.cs" />
-    <Compile Include="Tools\XNode.cs" />
-    <Compile Include="Tools\XYPoint.cs" />
     <EmbeddedResource Include="BusyDlg.resx">
       <DependentUpon>BusyDlg.cs</DependentUpon>
     </EmbeddedResource>
