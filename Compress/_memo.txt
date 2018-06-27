@@ -1,0 +1,45 @@
+----
+
+GZipStreamのマニュアルに4GB上限という記述がある。
+3.5のみ、4には記述が無い。
+
+.NET Framework 3.5
+https://msdn.microsoft.com/ja-jp/library/system.io.compression.gzipstream(v=vs.90).aspx
+> このクラスは、サイズが 4 GB を超えるファイルの圧縮には使用できません。
+
+.NET Framework 4
+https://msdn.microsoft.com/ja-jp/library/system.io.compression.gzipstream(v=vs.100).aspx
+
+なので大丈夫だと思う。
+
+- - -
+念のためテストした。
+
+50GBのファイルを圧縮・展開して問題なければ大丈夫だろう。
+
+
+// バイナリ圧縮率低め
+
+xxxxdex04 @ 2018.6.27
+
+mkrnd /b E:\temp\1.bin 50000000000
+C:\app\Kit\Compress\Compress /C E:\temp\1.bin E:\temp\2.bin
+C:\app\Kit\Compress\Compress /D E:\temp\2.bin E:\temp\3.bin
+fc /b E:\temp\1.bin E:\temp\3.bin
+
+	----> 相違なし
+		ファイル E:\TEMP\1.bin と E:\TEMP\3.BIN を比較しています
+		FC: 相違点は検出されませんでした
+
+
+// テキスト圧縮率高め
+
+xxxxdex04 @ 2018.6.27-28
+
+mkrnd /cc 01 /t E:\temp\1.txt 500000 99998
+C:\app\Kit\Compress\Compress /C E:\temp\1.txt E:\temp\2.txt
+C:\app\Kit\Compress\Compress /D E:\temp\2.txt E:\temp\3.txt
+fc /b E:\temp\1.txt E:\temp\3.txt
+
+	----> 相違なし？？？
+
