@@ -77,6 +77,7 @@ namespace HGet
 		private static ProxyMode_e _proxyMode = ProxyMode_e.IE;
 		private static string _proxyHost = "localhost";
 		private static int _proxyPort = 8080;
+		private static bool _tls12Enabled = false;
 		private static int _connectionTimeoutMillis = 20000; // 接続開始から、応答ヘッダを受信し終えるまでのタイムアウト
 		private static int _timeoutMillis = 30000;           // 接続開始から、全て通信し終えるまでのタイムアウト
 		private static int _noTrafficTimeoutMillis = 15000;  // 応答ボディ受信中の無通信タイムアウト
@@ -136,6 +137,11 @@ namespace HGet
 						default:
 							throw new Exception("不明なプロキシ利用モード");
 					}
+					continue;
+				}
+				if (ArgIs(argq, "/TLS12"))
+				{
+					_tls12Enabled = true;
 					continue;
 				}
 				if (ArgIs(argq, "/CT"))
@@ -263,6 +269,9 @@ namespace HGet
 				_bodyFile = argq.Dequeue();
 			}
 
+			if (1 <= argq.Count)
+				throw new Exception("Unknown command-line option: " + argq.Peek());
+
 			Perform();
 		}
 
@@ -274,7 +283,7 @@ namespace HGet
 			if (scheme == "https")
 				return 443;
 
-			throw new Exception("不明なスキーム");
+			throw new Exception("Unknown scheme: " + scheme);
 		}
 
 		private static void Perform()
@@ -289,6 +298,14 @@ namespace HGet
 			// どんな証明書も許可する。
 			ServicePointManager.ServerCertificateValidationCallback =
 				(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) => true;
+
+			if (_tls12Enabled)
+			{
+				// https://blogs.perficient.com/2016/04/28/tsl-1-2-and-net-support/
+				// .NET 4.0. TLS 1.2 is not supported, but if you have .NET 4.5 (or above) installed on the system then you still
+				// can opt in for TLS 1.2 even if your application framework doesn’t support it.
+				ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+			}
 
 			HttpWebRequest hwr = (HttpWebRequest)HttpWebRequest.Create(_url);
 			DateTime startedTime = DateTime.Now;
@@ -349,6 +366,11 @@ namespace HGet
 				if (IsSameIgnoreCase(name, "Host"))
 				{
 					hwr.Host = value;
+					continue;
+				}
+				if (IsSameIgnoreCase(name, "Accept"))
+				{
+					hwr.Accept = value;
 					continue;
 				}
 				hwr.Headers.Add(name, value);

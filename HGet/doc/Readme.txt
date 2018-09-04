@@ -1,7 +1,7 @@
 ----
 コマンド
 
-	HGet.exe [/P (DIRECT | IE | SPECIAL proxy-host proxy-port)] [/To timeout-millis]
+	HGet.exe [/P (DIRECT | IE | SPECIAL proxy-host proxy-port)] [/TLS12] [/To timeout-millis]
 	         [/M (HEAD | GET | POST)] [/U url] [/V (10 | 11)]
 	         [/H header-field-name header-field-value] ...
 	         [/B body-string | /BF body-file]
@@ -11,6 +11,8 @@
 			 [/K | /K-]
 	         [/-]
 	         [url | url body-file]
+
+		/TLS12 ... TLS 1.2 を有効にする。.NET Framework 4.5 以降がインストールされていること。
 
 		/K  ... 終了時キー待ち。
 		/K- ... エラー終了時キー待ち。
