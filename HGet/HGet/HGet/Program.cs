@@ -77,7 +77,7 @@ namespace HGet
 		private static ProxyMode_e _proxyMode = ProxyMode_e.IE;
 		private static string _proxyHost = "localhost";
 		private static int _proxyPort = 8080;
-		private static bool _tls12Enabled = false;
+		private static bool _tls12Enabled = true;
 		private static int _connectionTimeoutMillis = 20000; // 接続開始から、応答ヘッダを受信し終えるまでのタイムアウト
 		private static int _timeoutMillis = 30000;           // 接続開始から、全て通信し終えるまでのタイムアウト
 		private static int _noTrafficTimeoutMillis = 15000;  // 応答ボディ受信中の無通信タイムアウト
@@ -142,6 +142,11 @@ namespace HGet
 				if (ArgIs(argq, "/TLS12"))
 				{
 					_tls12Enabled = true;
+					continue;
+				}
+				if (ArgIs(argq, "/-TLS12"))
+				{
+					_tls12Enabled = false;
 					continue;
 				}
 				if (ArgIs(argq, "/CT"))
