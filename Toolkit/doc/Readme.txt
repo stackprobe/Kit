@@ -27,3 +27,14 @@
 	Toolkit.exe /SHA-512 入力パス 出力ファイル
 
 	Toolkit.exe /SHA-512-128 入力パス 出力ファイル
+
+	Toolkit.exe /PRINT-SCREEN 出力ファイルbase
+
+		ex.
+			Toolkit /print-screen C:\temp\screen_
+
+			モニタ３つのとき...
+
+				C:\temp\screen_1.bmp
+				C:\temp\screen_2.bmp
+				C:\temp\screen_3.bmp

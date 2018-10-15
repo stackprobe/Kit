@@ -7,6 +7,8 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Diagnostics;
+using System.Windows.Forms;
+using System.Drawing.Imaging;
 
 namespace Toolkit
 {
@@ -180,15 +182,15 @@ namespace Toolkit
 							default:
 								throw null;
 						}
-						Console.WriteLine("1.1 " + progFile);
+						Console.WriteLine("Start: " + progFile);
 						procs.Add(Process.Start(psi));
-						Console.WriteLine("1.2 " + procs[procs.Count - 1].Id);
+						Console.WriteLine("Started process id: " + procs[procs.Count - 1].Id);
 					}
 					foreach (Process proc in procs)
 					{
-						Console.WriteLine("2.1 " + proc.Id);
+						Console.WriteLine("Waiting process id: " + proc.Id);
 						proc.WaitForExit();
-						Console.WriteLine("2.2");
+						Console.WriteLine("Ended");
 					}
 					continue;
 				}
@@ -221,6 +223,27 @@ namespace Toolkit
 
 							return hash16;
 						});
+					}
+					continue;
+				}
+				if (EqualsIgnoreCase(argq.Peek(), "/PRINT-SCREEN"))
+				{
+					argq.Dequeue();
+					string wFileBase = argq.Dequeue();
+
+					int screen_no = 1;
+
+					foreach (Screen screen in Screen.AllScreens)
+					{
+						using (Bitmap bmp = new Bitmap(screen.Bounds.Width, screen.Bounds.Height))
+						{
+							using (Graphics g = Graphics.FromImage(bmp))
+							{
+								g.CopyFromScreen(screen.Bounds.Location, new Point(0, 0), screen.Bounds.Size);
+							}
+							bmp.Save(wFileBase + screen_no.ToString("D2") + ".bmp", ImageFormat.Bmp);
+						}
+						screen_no++;
 					}
 					continue;
 				}
