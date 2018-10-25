@@ -58,7 +58,7 @@
             this.toolStripMenuItem1,
             this.終了ToolStripMenuItem});
 			this.ttiMenu.Name = "TTIMenu";
-			this.ttiMenu.Size = new System.Drawing.Size(153, 98);
+			this.ttiMenu.Size = new System.Drawing.Size(111, 76);
 			// 
 			// 設定ToolStripMenuItem
 			// 
@@ -68,51 +68,51 @@
             this.toolStripMenuItem2,
             this.詳細設定ToolStripMenuItem});
 			this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
-			this.設定ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.設定ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
 			this.設定ToolStripMenuItem.Text = "設定";
 			// 
 			// ポート番号ToolStripMenuItem
 			// 
 			this.ポート番号ToolStripMenuItem.Name = "ポート番号ToolStripMenuItem";
-			this.ポート番号ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.ポート番号ToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
 			this.ポート番号ToolStripMenuItem.Text = "ポート番号";
 			this.ポート番号ToolStripMenuItem.Click += new System.EventHandler(this.ポート番号ToolStripMenuItem_Click);
 			// 
 			// データディレクトリToolStripMenuItem
 			// 
 			this.データディレクトリToolStripMenuItem.Name = "データディレクトリToolStripMenuItem";
-			this.データディレクトリToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.データディレクトリToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
 			this.データディレクトリToolStripMenuItem.Text = "データ ディレクトリ";
 			this.データディレクトリToolStripMenuItem.Click += new System.EventHandler(this.データディレクトリToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem2
 			// 
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(185, 6);
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(150, 6);
 			// 
 			// 詳細設定ToolStripMenuItem
 			// 
 			this.詳細設定ToolStripMenuItem.Name = "詳細設定ToolStripMenuItem";
-			this.詳細設定ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.詳細設定ToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
 			this.詳細設定ToolStripMenuItem.Text = "詳細設定";
 			this.詳細設定ToolStripMenuItem.Click += new System.EventHandler(this.詳細設定ToolStripMenuItem_Click);
 			// 
 			// 再起動ToolStripMenuItem
 			// 
 			this.再起動ToolStripMenuItem.Name = "再起動ToolStripMenuItem";
-			this.再起動ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.再起動ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
 			this.再起動ToolStripMenuItem.Text = "再起動";
 			this.再起動ToolStripMenuItem.Click += new System.EventHandler(this.再起動ToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(107, 6);
 			// 
 			// 終了ToolStripMenuItem
 			// 
 			this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-			this.終了ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.終了ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
 			this.終了ToolStripMenuItem.Text = "終了";
 			this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
 			// 
@@ -124,11 +124,13 @@
 			// 
 			// MainWin
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(284, 262);
+			this.ClientSize = new System.Drawing.Size(284, 261);
+			this.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Location = new System.Drawing.Point(-400, -400);
+			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MainWin";
