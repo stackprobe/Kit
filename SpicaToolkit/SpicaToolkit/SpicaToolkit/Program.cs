@@ -71,7 +71,7 @@ namespace SpicaToolkit
 							timeoutEv.Set();
 						}
 					}
-					return;
+					continue;
 				}
 				if (EqualsIgnoreCase(argq.Peek(), "/NAMED-EVENT"))
 				{
@@ -86,7 +86,7 @@ namespace SpicaToolkit
 					{
 						WaitForMillis(timeoutEv, -1);
 					}
-					return;
+					continue;
 				}
 				if (EqualsIgnoreCase(argq.Peek(), "/NAMED-EVENT-WAIT"))
 				{
@@ -100,7 +100,7 @@ namespace SpicaToolkit
 					{
 						WaitForMillis(ev, millis);
 					}
-					return;
+					continue;
 				}
 				if (EqualsIgnoreCase(argq.Peek(), "/NAMED-EVENT-SET"))
 				{
