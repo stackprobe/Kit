@@ -46,6 +46,7 @@ namespace SpicaToolkit
 			{
 				if (EqualsIgnoreCase(argq.Peek(), "/MUTEX"))
 				{
+					argq.Dequeue();
 					string mtxName = argq.Dequeue();
 					int millis = int.Parse(argq.Dequeue());
 					string enterEvName = argq.Dequeue();
@@ -75,21 +76,26 @@ namespace SpicaToolkit
 				}
 				if (EqualsIgnoreCase(argq.Peek(), "/NAMED-EVENT"))
 				{
+					argq.Dequeue();
 					string evName = argq.Dequeue();
+					string enterEvName = argq.Dequeue();
 					string timeoutEvName = argq.Dequeue();
 					int ownerProcId = int.Parse(argq.Dequeue());
 
 					OwnerProc = Process.GetProcessById(ownerProcId);
 
 					using (EventWaitHandle ev = CreateNamedEvent(evName))
+					using (EventWaitHandle enterEv = CreateNamedEvent(enterEvName))
 					using (EventWaitHandle timeoutEv = CreateNamedEvent(timeoutEvName))
 					{
+						enterEv.Set();
 						WaitForMillis(timeoutEv, -1);
 					}
 					continue;
 				}
 				if (EqualsIgnoreCase(argq.Peek(), "/NAMED-EVENT-WAIT"))
 				{
+					argq.Dequeue();
 					string evName = argq.Dequeue();
 					int millis = int.Parse(argq.Dequeue());
 					int ownerProcId = int.Parse(argq.Dequeue());
@@ -104,6 +110,7 @@ namespace SpicaToolkit
 				}
 				if (EqualsIgnoreCase(argq.Peek(), "/NAMED-EVENT-SET"))
 				{
+					argq.Dequeue();
 					string evName = argq.Dequeue();
 
 					using (EventWaitHandle ev = CreateNamedEvent(evName))
@@ -123,7 +130,7 @@ namespace SpicaToolkit
 		{
 			const int WAIT_MILLIS = 2000;
 
-			do
+			for (; ; )
 			{
 				if (OwnerProc.HasExited)
 					throw new Exception("親プロセスは停止しました。");
@@ -134,10 +141,13 @@ namespace SpicaToolkit
 					return true;
 
 				if (millis != -1)
+				{
 					millis -= waitMillis;
-			}
-			while (0 < millis);
 
+					if (millis <= 0)
+						break;
+				}
+			}
 			return false;
 		}
 
