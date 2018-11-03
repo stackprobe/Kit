@@ -1,7 +1,7 @@
 ----
 コマンド
 
-	SpicaToolkit.exe /MUTEX mutex名 待ち時間millis enterイベント名(set) leaveイベント名(wait) timeoutイベント名(set) 呼び出し側プロセスid
+	SpicaToolkit.exe /MUTEX mutex名 待ち時間millis enterイベント名(set) timeoutイベント名(set) leaveイベント名(wait) 呼び出し側プロセスid
 
 	SpicaToolkit.exe /NAMED-EVENT 作成イベント名(open) enterイベント名(set) timeoutイベント名(wait) 呼び出し側プロセスid
 

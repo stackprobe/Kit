@@ -50,22 +50,22 @@ namespace SpicaToolkit
 					string mtxName = argq.Dequeue();
 					int millis = int.Parse(argq.Dequeue());
 					string enterEvName = argq.Dequeue();
-					string leaveEvName = argq.Dequeue();
 					string timeoutEvName = argq.Dequeue();
+					string leaveEvName = argq.Dequeue();
 					int ownerProcId = int.Parse(argq.Dequeue());
 
 					OwnerProc = Process.GetProcessById(ownerProcId);
 
 					using (Mutex m = CreateMutex(mtxName))
 					using (EventWaitHandle enterEv = CreateNamedEvent(enterEvName))
+					using (EventWaitHandle timeoutEv = CreateNamedEvent(timeoutEvName))
 					using (EventWaitHandle leaveEv = CreateNamedEvent(leaveEvName))
-					using (EventWaitHandle timeoutEv = CreateNamedEvent(leaveEvName))
 					{
 						if (WaitForMillis(m, millis))
 						{
 							enterEv.Set();
+							WaitForMillis(leaveEv, -1);
 							m.ReleaseMutex();
-							leaveEv.WaitOne();
 						}
 						else
 						{
