@@ -1,14 +1,14 @@
 ----
-ƒRƒ}ƒ“ƒh
+ã‚³ãƒžãƒ³ãƒ‰
 
-	Bmp2Csv.exe [/J JPEGƒNƒIƒŠƒeƒB] [/-] “ü—Íƒtƒ@ƒCƒ‹ o—Íƒtƒ@ƒCƒ‹
+	Bmp2Csv.exe [/J JPEGã‚¯ã‚ªãƒªãƒ†ã‚£] [/-] å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ« å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
 
-		“ü—ÍEo—Íƒtƒ@ƒCƒ‹‚ÌŠg’£Žq‚ðŒ©‚Äˆ—‚ðŒˆ‚ß‚éB
+		å…¥åŠ›ãƒ»å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã‚’è¦‹ã¦å‡¦ç†ã‚’æ±ºã‚ã‚‹ã€‚
 
-		JPEGƒNƒIƒŠƒeƒB ... 0 ` 100 == ’á•iŽ¿ ` ‚•iŽ¿
+		JPEGã‚¯ã‚ªãƒªãƒ†ã‚£ ... 0 ï½ž 100 == ä½Žå“è³ª ï½ž é«˜å“è³ª
 
 ----
-Šg’£Žq‚Æƒtƒ@ƒCƒ‹ƒtƒH[ƒ}ƒbƒg
+æ‹¡å¼µå­ã¨ãƒ•ã‚¡ã‚¤ãƒ«ãƒ•ã‚©ãƒ¼ãƒžãƒƒãƒˆ
 
 	.bmp   ==  BMP
 	.csv   ==  CSV
@@ -25,13 +25,13 @@
 	.wmf   ==  WMF
 
 ----
-CSVƒtƒ@ƒCƒ‹
+CSVãƒ•ã‚¡ã‚¤ãƒ«
 
-	ŠeƒZƒ‹‚Í8Œ…‚Ì16i”‚ÅˆÈ‰º‚Ì‘Ž®
+	å„ã‚»ãƒ«ã¯8æ¡ã®16é€²æ•°ã§ä»¥ä¸‹ã®æ›¸å¼
 
 		AARRGGBB
 
-			AA ... ƒAƒ‹ƒtƒ@’l
-			RR ... Ô
-			GG ... —Î
-			BB ... Â
+			AA ... ã‚¢ãƒ«ãƒ•ã‚¡å€¤
+			RR ... èµ¤
+			GG ... ç·‘
+			BB ... é’

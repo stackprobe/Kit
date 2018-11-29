@@ -1,7 +1,7 @@
 ----
-ƒRƒ}ƒ“ƒh
+ã‚³ãƒžãƒ³ãƒ‰
 
-	Compress.exe (/C | /D) “ü—Íƒtƒ@ƒCƒ‹ o—Íƒtƒ@ƒCƒ‹
+	Compress.exe (/C | /D) å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ« å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
 
-		/C ... ˆ³k
-		/D ... “WŠJ
+		/C ... åœ§ç¸®
+		/D ... å±•é–‹

@@ -1,9 +1,9 @@
 ----
-ƒRƒ}ƒ“ƒh
+ã‚³ãƒžãƒ³ãƒ‰
 
-	WDrop.exe eƒvƒƒZƒX‚ÌƒpƒX eƒvƒƒZƒXID eƒvƒƒZƒX‚ª’Í‚ñ‚Å‚¢‚éƒ~ƒ…[ƒeƒbƒNƒX–¼ o—Íƒtƒ@ƒCƒ‹–¼
+	WDrop.exe è¦ªãƒ—ãƒ­ã‚»ã‚¹ã®ãƒ‘ã‚¹ è¦ªãƒ—ãƒ­ã‚»ã‚¹ID è¦ªãƒ—ãƒ­ã‚»ã‚¹ãŒæŽ´ã‚“ã§ã„ã‚‹ãƒŸãƒ¥ãƒ¼ãƒ†ãƒƒã‚¯ã‚¹å å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«å
 
 ----
-ŽÀs—á
+å®Ÿè¡Œä¾‹
 
 	WDrop.exe C:\Programs\UserApp.exe 2468 UserApp_Mtx C:\temp\UserApp_out.tmp

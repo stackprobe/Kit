@@ -1,19 +1,19 @@
 ----
-ƒRƒ}ƒ“ƒh
+ã‚³ãƒãƒ³ãƒ‰
 
-	SpicaToolkit.exe /MUTEX mutex–¼ ‘Ò‚¿ŠÔmillis enterƒCƒxƒ“ƒg–¼(set) timeoutƒCƒxƒ“ƒg–¼(set) leaveƒCƒxƒ“ƒg–¼(wait) ŒÄ‚Ño‚µ‘¤ƒvƒƒZƒXid
+	SpicaToolkit.exe /MUTEX mutexå å¾…ã¡æ™‚é–“millis enterã‚¤ãƒ™ãƒ³ãƒˆå(set) timeoutã‚¤ãƒ™ãƒ³ãƒˆå(set) leaveã‚¤ãƒ™ãƒ³ãƒˆå(wait) å‘¼ã³å‡ºã—å´ãƒ—ãƒ­ã‚»ã‚¹id
 
-	SpicaToolkit.exe /NAMED-EVENT ì¬ƒCƒxƒ“ƒg–¼(open) enterƒCƒxƒ“ƒg–¼(set) timeoutƒCƒxƒ“ƒg–¼(wait) ŒÄ‚Ño‚µ‘¤ƒvƒƒZƒXid
+	SpicaToolkit.exe /NAMED-EVENT ä½œæˆã‚¤ãƒ™ãƒ³ãƒˆå(open) enterã‚¤ãƒ™ãƒ³ãƒˆå(set) timeoutã‚¤ãƒ™ãƒ³ãƒˆå(wait) å‘¼ã³å‡ºã—å´ãƒ—ãƒ­ã‚»ã‚¹id
 
-	SpicaToolkit.exe /NAMED-EVENT-WAIT ‘Ò‚¿ƒCƒxƒ“ƒg–¼(wait) ‘Ò‚¿ŠÔmillis ŒÄ‚Ño‚µ‘¤ƒvƒƒZƒXid
+	SpicaToolkit.exe /NAMED-EVENT-WAIT å¾…ã¡ã‚¤ãƒ™ãƒ³ãƒˆå(wait) å¾…ã¡æ™‚é–“millis å‘¼ã³å‡ºã—å´ãƒ—ãƒ­ã‚»ã‚¹id
 
-	SpicaToolkit.exe /NAMED-EVENT-SET setƒCƒxƒ“ƒg–¼(set)
+	SpicaToolkit.exe /NAMED-EVENT-SET setã‚¤ãƒ™ãƒ³ãƒˆå(set)
 
 
 ----
-ƒtƒ@ƒCƒ‹‚©‚ç
+ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰
 
 	SpicaToolkit.exe //R Args.txt
 
-		Args.txt ... Shift_JIS, ‰üs‹æØ‚è
+		Args.txt ... Shift_JIS, æ”¹è¡ŒåŒºåˆ‡ã‚Š
 

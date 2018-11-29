@@ -1,50 +1,50 @@
 ----
-ƒRƒ}ƒ“ƒh
+ã‚³ãƒžãƒ³ãƒ‰
 
-	GmailSend.exe [/F ‘—MŒ³ƒ[ƒ‹ƒAƒhƒŒƒX]
-	              [/To ‘—Mæƒ[ƒ‹ƒAƒhƒŒƒX] ...
-	              [/CC ‘—Mæƒ[ƒ‹ƒAƒhƒŒƒX] ...
-	              [/BCC ‘—Mæƒ[ƒ‹ƒAƒhƒŒƒX] ...
-	              [/S •\‘è]
-	              [/B –{•¶]
-	              [/A “Y•tƒtƒ@ƒCƒ‹] ...
-	              [/C ƒ†[ƒU[–¼ ƒpƒXƒ[ƒh]
-	              [/Host SMTP-ƒT[ƒo[ƒzƒXƒg]
-	              [/Port SMTP-ƒT[ƒo[ƒ|[ƒg”Ô†]
+	GmailSend.exe [/F é€ä¿¡å…ƒãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹]
+	              [/To é€ä¿¡å…ˆãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹] ...
+	              [/CC é€ä¿¡å…ˆãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹] ...
+	              [/BCC é€ä¿¡å…ˆãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹] ...
+	              [/S è¡¨é¡Œ]
+	              [/B æœ¬æ–‡]
+	              [/A æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«] ...
+	              [/C ãƒ¦ãƒ¼ã‚¶ãƒ¼å ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰]
+	              [/Host SMTP-ã‚µãƒ¼ãƒãƒ¼ãƒ›ã‚¹ãƒˆ]
+	              [/Port SMTP-ã‚µãƒ¼ãƒãƒ¼ãƒãƒ¼ãƒˆç•ªå·]
 	              [/-SSL]
 	              [/SF SUCCESSFUL-FILE]
 	              [/ELF ERROR-LOG-FILE]
 
-	–{•¶
+	æœ¬æ–‡
 
 		**XXX -> *XXX
-		*XXX -> ƒtƒ@ƒCƒ‹ XXX ‚Ì“à—e, Shift_JIS ‚Å‚ ‚é‚±‚ÆB
+		*XXX -> ãƒ•ã‚¡ã‚¤ãƒ« XXX ã®å†…å®¹, Shift_JIS ã§ã‚ã‚‹ã“ã¨ã€‚
 		XXX -> XXX
 
 	SUCCESSFUL-FILE
 
-		‘—M‚É¬Œ÷‚µ‚½ê‡A‹ó‚Ìƒtƒ@ƒCƒ‹‚ðì¬‚·‚éB
+		é€ä¿¡ã«æˆåŠŸã—ãŸå ´åˆã€ç©ºã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚
 
 	ERROR-LOG-FILE
 
-		‘—M‚ÉŽ¸”s‚µ‚½ê‡AƒGƒ‰[“à—e‚ð‘‚«o‚·BShift_JIS ‚Å‘‚«o‚·B
+		é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆã€ã‚¨ãƒ©ãƒ¼å†…å®¹ã‚’æ›¸ãå‡ºã™ã€‚Shift_JIS ã§æ›¸ãå‡ºã™ã€‚
 
 ----
-Žg—p—á
+ä½¿ç”¨ä¾‹
 
-	GmailSend.exe /F from123@gmail.com /To to456@xxx.com /S ‚ ‚ ‚  /B *Body.txt /C from123@gmail.com 1111
+	GmailSend.exe /F from123@gmail.com /To to456@xxx.com /S ã‚ã‚ã‚ /B *Body.txt /C from123@gmail.com 1111
 
 ----
-ˆø”‚ðƒtƒ@ƒCƒ‹‚ÅŽw’è‚·‚éB
+å¼•æ•°ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã§æŒ‡å®šã™ã‚‹ã€‚
 
-	123.txt ‚ÉˆÈ‰º‚ð‹Lq‚·‚éB(Shift_JIS)
+	123.txt ã«ä»¥ä¸‹ã‚’è¨˜è¿°ã™ã‚‹ã€‚(Shift_JIS)
 
 		/F
 		from123@gmail.com
 		/To
 		to456@xxx.com
 		/S
-		‚ ‚ ‚ 
+		ã‚ã‚ã‚
 		/B
 		*Body.txt
 		/C
@@ -54,8 +54,8 @@
 	GmailSend.exe //R 123.txt
 
 ----
-”õ–Y
+å‚™å¿˜
 
-	5.5.1 Authentication Required. Learm more at ‚Æ•Ô‚³‚ê‚éê‡A
-	ƒAƒJƒEƒ“ƒgî•ñ / Google ‚Ö‚ÌƒƒOƒCƒ“ / ˆÀ‘S«‚Ì’á‚¢ƒAƒvƒŠ‚Ì‹–‰ÂF—LŒø
-	‚É‚·‚éB
+	5.5.1 Authentication Required. Learm more at ã¨è¿”ã•ã‚Œã‚‹å ´åˆã€
+	ã‚¢ã‚«ã‚¦ãƒ³ãƒˆæƒ…å ± / Google ã¸ã®ãƒ­ã‚°ã‚¤ãƒ³ / å®‰å…¨æ€§ã®ä½Žã„ã‚¢ãƒ—ãƒªã®è¨±å¯ï¼šæœ‰åŠ¹
+	ã«ã™ã‚‹ã€‚

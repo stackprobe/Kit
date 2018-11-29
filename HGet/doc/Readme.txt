@@ -1,5 +1,5 @@
 ----
-ƒRƒ}ƒ“ƒh
+ã‚³ãƒžãƒ³ãƒ‰
 
 	HGet.exe [/P (DIRECT | IE | SPECIAL proxy-host proxy-port)] [/-TLS12] [/To timeout-millis]
 	         [/M (HEAD | GET | POST)] [/U url] [/V (10 | 11)]
@@ -12,14 +12,14 @@
 	         [/-]
 	         [url | url body-file]
 
-		/-TLS12 ... TLS 1.2 ‚ð–³Œø‚É‚·‚éB
+		/-TLS12 ... TLS 1.2 ã‚’ç„¡åŠ¹ã«ã™ã‚‹ã€‚
 
-		/K  ... I—¹ŽžƒL[‘Ò‚¿B
-		/K- ... ƒGƒ‰[I—¹ŽžƒL[‘Ò‚¿B
+		/K  ... çµ‚äº†æ™‚ã‚­ãƒ¼å¾…ã¡ã€‚
+		/K- ... ã‚¨ãƒ©ãƒ¼çµ‚äº†æ™‚ã‚­ãƒ¼å¾…ã¡ã€‚
 
 ----
-ƒRƒ}ƒ“ƒhˆø”‚ðƒtƒ@ƒCƒ‹‚ÅŽw’è‚·‚éB
+ã‚³ãƒžãƒ³ãƒ‰å¼•æ•°ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã§æŒ‡å®šã™ã‚‹ã€‚
 
 	HGet.exe //R args-file
 
-		args-file ... ƒRƒ}ƒ“ƒhˆø”‚ðs–ˆ‚É‹Lq‚·‚éB•¶ŽšƒR[ƒh‚Í Shift_JIS
+		args-file ... ã‚³ãƒžãƒ³ãƒ‰å¼•æ•°ã‚’è¡Œæ¯Žã«è¨˜è¿°ã™ã‚‹ã€‚æ–‡å­—ã‚³ãƒ¼ãƒ‰ã¯ Shift_JIS

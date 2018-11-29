@@ -1,39 +1,39 @@
 ----
-ƒRƒ}ƒ“ƒh
+ã‚³ãƒžãƒ³ãƒ‰
 
-	Toolkit.exe /MASK-RESOURCE-IMAGE-NBC “ü—Í‰æ‘œƒtƒ@ƒCƒ‹ o—Ípngƒtƒ@ƒCƒ‹
+	Toolkit.exe /MASK-RESOURCE-IMAGE-NBC å…¥åŠ›ç”»åƒãƒ•ã‚¡ã‚¤ãƒ« å‡ºåŠ›pngãƒ•ã‚¡ã‚¤ãƒ«
 
-		ƒnƒbƒVƒ…‚Ìƒo[ƒR[ƒh–³‚µ”Å
+		ãƒãƒƒã‚·ãƒ¥ã®ãƒãƒ¼ã‚³ãƒ¼ãƒ‰ç„¡ã—ç‰ˆ
 
-	Toolkit.exe /MASK-RESOURCE-IMAGE “ü—Í‰æ‘œƒtƒ@ƒCƒ‹ o—Ípngƒtƒ@ƒCƒ‹ [ƒnƒbƒVƒ…“ü—Íƒtƒ@ƒCƒ‹]
+	Toolkit.exe /MASK-RESOURCE-IMAGE å…¥åŠ›ç”»åƒãƒ•ã‚¡ã‚¤ãƒ« å‡ºåŠ›pngãƒ•ã‚¡ã‚¤ãƒ« [ãƒãƒƒã‚·ãƒ¥å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«]
 
-	Toolkit.exe /IMG-TO-IMG “ü—Í‰æ‘œƒtƒ@ƒCƒ‹ o—Í‰æ‘œƒtƒ@ƒCƒ‹
+	Toolkit.exe /IMG-TO-IMG å…¥åŠ›ç”»åƒãƒ•ã‚¡ã‚¤ãƒ« å‡ºåŠ›ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«
 
-	Toolkit.exe /EVENT-LOG ŠJŽn“úŽž I—¹“úŽž ƒƒbƒZ[ƒWo—Í‚Ì—L–³ o—Ícsvƒtƒ@ƒCƒ‹
+	Toolkit.exe /EVENT-LOG é–‹å§‹æ—¥æ™‚ çµ‚äº†æ—¥æ™‚ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å‡ºåŠ›ã®æœ‰ç„¡ å‡ºåŠ›csvãƒ•ã‚¡ã‚¤ãƒ«
 
-		ŠJŽn“úŽž              --  YYYYMMDDhhmmss
-		I—¹“úŽž              --  YYYYMMDDhhmmss
-		ƒƒbƒZ[ƒWo—Í‚Ì—L–³  --  0:–³‚µA1:—L‚è
+		é–‹å§‹æ—¥æ™‚              --  YYYYMMDDhhmmss
+		çµ‚äº†æ—¥æ™‚              --  YYYYMMDDhhmmss
+		ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å‡ºåŠ›ã®æœ‰ç„¡  --  0:ç„¡ã—ã€1:æœ‰ã‚Š
 
 		ex.
 			Toolkit /event-log 20170101000000 20181231235959 1 output.csv
 
-	Toolkit.exe /MULTI-RUN ƒ‚[ƒh [ŽÀsƒtƒ@ƒCƒ‹...]
+	Toolkit.exe /MULTI-RUN ãƒ¢ãƒ¼ãƒ‰ [å®Ÿè¡Œãƒ•ã‚¡ã‚¤ãƒ«...]
 
-		ƒ‚[ƒh -- (0, 1, 2) == (Hide, Min, Normal)
+		ãƒ¢ãƒ¼ãƒ‰ -- (0, 1, 2) == (Hide, Min, Normal)
 
-	Toolkit.exe /MD5 “ü—ÍƒpƒX o—Íƒtƒ@ƒCƒ‹
+	Toolkit.exe /MD5 å…¥åŠ›ãƒ‘ã‚¹ å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
 
-	Toolkit.exe /SHA-512 “ü—ÍƒpƒX o—Íƒtƒ@ƒCƒ‹
+	Toolkit.exe /SHA-512 å…¥åŠ›ãƒ‘ã‚¹ å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
 
-	Toolkit.exe /SHA-512-128 “ü—ÍƒpƒX o—Íƒtƒ@ƒCƒ‹
+	Toolkit.exe /SHA-512-128 å…¥åŠ›ãƒ‘ã‚¹ å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
 
-	Toolkit.exe /PRINT-SCREEN o—Íƒtƒ@ƒCƒ‹base
+	Toolkit.exe /PRINT-SCREEN å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«base
 
 		ex.
 			Toolkit /print-screen C:\temp\screen_
 
-			ƒ‚ƒjƒ^‚R‚Â‚Ì‚Æ‚«...
+			ãƒ¢ãƒ‹ã‚¿ï¼“ã¤ã®ã¨ã...
 
 				C:\temp\screen_1.bmp
 				C:\temp\screen_2.bmp

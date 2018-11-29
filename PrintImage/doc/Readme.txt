@@ -1,24 +1,24 @@
 ----
-ƒRƒ}ƒ“ƒh
+ã‚³ãƒžãƒ³ãƒ‰
 
-	—pŽ†ƒTƒCƒY–¼ƒŠƒXƒg‚ð•\Ž¦‚·‚éB
+	ç”¨ç´™ã‚µã‚¤ã‚ºåãƒªã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ã€‚
 
 		PrintImage.exe /SL
 
-	ƒvƒŠƒ“ƒ^–¼ƒŠƒXƒg‚ð•\Ž¦‚·‚éB
+	ãƒ—ãƒªãƒ³ã‚¿åãƒªã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ã€‚
 
 		PrintImage.exe /PL
 
-	ˆóü‚·‚éB
+	å°åˆ·ã™ã‚‹ã€‚
 
-		PrintImage.exe [/M ¶—]”’ ã—]”’ ‰E—]”’ ‰º—]”’] [/S —pŽ†ƒTƒCƒY–¼] [/P ƒvƒŠƒ“ƒ^–¼] (/F ‰æ‘œƒtƒ@ƒCƒ‹–¼)...
+		PrintImage.exe [/M å·¦ä½™ç™½ ä¸Šä½™ç™½ å³ä½™ç™½ ä¸‹ä½™ç™½] [/S ç”¨ç´™ã‚µã‚¤ã‚ºå] [/P ãƒ—ãƒªãƒ³ã‚¿å] (/F ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«å)...
 
-			—]”’‚Í®”‚ðŽw’è‚·‚éB
-			’PˆÊ‚Í 1/100 ƒCƒ“ƒ`
+			ä½™ç™½ã¯æ•´æ•°ã‚’æŒ‡å®šã™ã‚‹ã€‚
+			å˜ä½ã¯ 1/100 ã‚¤ãƒ³ãƒ
 
 ----
-ƒRƒ}ƒ“ƒhˆø”‚ðƒtƒ@ƒCƒ‹‚ÅŽw’è‚·‚éB
+ã‚³ãƒžãƒ³ãƒ‰å¼•æ•°ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã§æŒ‡å®šã™ã‚‹ã€‚
 
-	PrintImage.exe //R ˆø”—ñƒtƒ@ƒCƒ‹
+	PrintImage.exe //R å¼•æ•°åˆ—ãƒ•ã‚¡ã‚¤ãƒ«
 
-		ˆø”—ñƒtƒ@ƒCƒ‹ ... ƒRƒ}ƒ“ƒhˆø”‚ðs–ˆ‚É‹Lq‚·‚éB•¶ŽšƒR[ƒh‚Í Shift_JIS
+		å¼•æ•°åˆ—ãƒ•ã‚¡ã‚¤ãƒ« ... ã‚³ãƒžãƒ³ãƒ‰å¼•æ•°ã‚’è¡Œæ¯Žã«è¨˜è¿°ã™ã‚‹ã€‚æ–‡å­—ã‚³ãƒ¼ãƒ‰ã¯ Shift_JIS

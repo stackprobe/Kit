@@ -1,212 +1,212 @@
 ----
-�R�}���h
+コマンド
 
-	ImgTools.exe (/F ���̓t�@�C�� | /RWF ���o�̓t�@�C�� | [/RF ���̓t�@�C��] /WF �o�̓t�@�C��) ���H�I�v�V����...
+	ImgTools.exe (/F 入力ファイル | /RWF 入出力ファイル | [/RF 入力ファイル] /WF 出力ファイル) 加工オプション...
 
-		/F   ... ���̓t�@�C�����w�肵�āA���̓t�@�C�����̌��ɓK���ȃT�t�B�b�N�X��t���ďo�͂���B
-		/RWF ... ���̓t�@�C�����w�肵�āA���̓t�@�C�����㏑������B
-		/RF  ... ���̓t�@�C�����w�肷��B�ȗ�����ƁA�K���ȉ摜����X�^�[�g����B
-		/WF  ... �o�̓t�@�C�����w�肷��B
+		/F   ... 入力ファイルを指定して、入力ファイル名の後ろに適当なサフィックスを付けて出力する。
+		/RWF ... 入力ファイルを指定して、入力ファイルを上書きする。
+		/RF  ... 入力ファイルを指定する。省略すると、適当な画像からスタートする。
+		/WF  ... 出力ファイルを指定する。
 
-		���̓t�@�C���̃t�H�[�}�b�g = ���ł�
-		�o�̓t�@�C���̃t�H�[�}�b�g = png
+		入力ファイルのフォーマット = 何でも
+		出力ファイルのフォーマット = png
 
 ----
-���H�I�v�V����
+加工オプション
 
-	/E �� ����
+	/E 幅 高さ
 
-		���݂̉摜���w�肳�ꂽ���E�����Ɋg��E�k������B
+		現在の画像を指定された幅・高さに拡大・縮小する。
 
-			��   ... int 1�`
-			���� ... int 1�`
+			幅   ... int 1～
+			高さ ... int 1～
 
-	/EW ��
+	/EW 幅
 
-		���݂̉摜���w�肳�ꂽ���ɏc������ێ����Ċg��E�k������B
+		現在の画像を指定された幅に縦横比を維持して拡大・縮小する。
 
-			�� ... int 1�`
+			幅 ... int 1～
 
-	/EH ����
+	/EH 高さ
 
-		���݂̉摜���w�肳�ꂽ�����ɏc������ێ����Ċg��E�k������B
+		現在の画像を指定された高さに縦横比を維持して拡大・縮小する。
 
-			���� ... int 1�`
+			高さ ... int 1～
 
-	/C �� �� �� ����
+	/C 左 上 幅 高さ
 
-		�w�肳�ꂽ�͈͂�؂���A���݂̉摜�ɂ���B
+		指定された範囲を切り取り、現在の画像にする。
 
-			��   ... int 0�`
-			��   ... int 0�`
-			��   ... int 1�`
-			���� ... int 1�`
+			左   ... int 0～
+			上   ... int 0～
+			幅   ... int 1～
+			高さ ... int 1～
 
 	/TW
 
-		�E��ƍ����𔽓]
+		右上と左下を反転
 
 	/T
 
-		�㉺���]
+		上下反転
 
 	/R 1
 
-		���v���� 90 �x��]
+		時計回りに 90 度回転
 
 	/R 2
 
-		���v���� 180 �x��]
+		時計回りに 180 度回転
 
 	/R 3
 
-		���v���� 270 �x��]
+		時計回りに 270 度回転
 
 	/TLR
 
-		���E���]
+		左右反転
 
 	/M 2
 
-		�������ɋ����ۂ��g��
+		下方向に鏡っぽく拡張
 
 	/M 4
 
-		�������ɋ����ۂ��g��
+		左方向に鏡っぽく拡張
 
 	/M 6
 
-		�E�����ɋ����ۂ��g��
+		右方向に鏡っぽく拡張
 
 	/M 8
 
-		������ɋ����ۂ��g��
+		上方向に鏡っぽく拡張
 
 	/TP X_POS Y_POS
 
-		�w��ʒu�̃h�b�g�Ɠ����F�̃h�b�g�𓧖� (A = 0) �ɂ���B
+		指定位置のドットと同じ色のドットを透明 (A = 0) にする。
 
-			X_POS ... int 0�`
-			Y_POS ... int 0�`
+			X_POS ... int 0～
+			Y_POS ... int 0～
 
 	/TC R G B
 
-		�w��F�Ɠ����F�̃h�b�g�𓧖� (A = 0) �ɂ���B
+		指定色と同じ色のドットを透明 (A = 0) にする。
 
-			R ... int 0�`255
-			G ... int 0�`255
-			B ... int 0�`255
+			R ... int 0～255
+			G ... int 0～255
+			B ... int 0～255
 
 	/ROT ANGLE
 
-		�p�x���w�肵�ĉ摜����]����B
+		角度を指定して画像を回転する。
 
-			ANGLE ... double ���W�A���p
+			ANGLE ... double ラジアン角
 
 	/ROTEX ANGLE X Y A R G B D
 
-		�p�x�Ɓu��]���̍��W�v�Ɓu�̈�O�̐F�v�Ɓu���x�v���w�肵�ĉ摜����]����B
+		角度と「回転軸の座標」と「領域外の色」と「精度」を指定して画像を回転する。
 
-			ANGLE ... double ���W�A���p
-			X ... double ��]���̍��W, �摜�̒��S�͕�(����)���Q
-			Y ... double �V
-			A ... int 0�`255 �̈�O�̐F
-			R ... int 0�`255 �V
-			G ... int 0�`255 �V
-			B ... int 0�`255 �V
-			D ... int 1�` �傫���������x, �f�t�H���g = 16
+			ANGLE ... double ラジアン角
+			X ... double 回転軸の座標, 画像の中心は幅(高さ)÷２
+			Y ... double 〃
+			A ... int 0～255 領域外の色
+			R ... int 0～255 〃
+			G ... int 0～255 〃
+			B ... int 0～255 〃
+			D ... int 1～ 大きい程高精度, デフォルト = 16
 
 	/EXTEND L T R B
 
-		�㉺���E�e�����Ƀf�t�H���g�F�Ŋg������B
+		上下左右各方向にデフォルト色で拡張する。
 
-			L ... int 0�` �������̃h�b�g��
-			T ... int 0�` ������̃h�b�g��
-			R ... int 0�` �E�����̃h�b�g��
-			B ... int 0�` �������̃h�b�g��
+			L ... int 0～ 左方向のドット数
+			T ... int 0～ 上方向のドット数
+			R ... int 0～ 右方向のドット数
+			B ... int 0～ 下方向のドット数
 
 	/EXTENDEX L T R B A R G B
 
-		�㉺���E�e�����Ɏw��F�Ŋg������B
+		上下左右各方向に指定色で拡張する。
 
-			L ... int 0�` �������̃h�b�g��
-			T ... int 0�` ������̃h�b�g��
-			R ... int 0�` �E�����̃h�b�g��
-			B ... int 0�` �������̃h�b�g��
-			A ... int 0�`255 �w��F
-			R ... int 0�`255 �V
-			G ... int 0�`255 �V
-			B ... int 0�`255 �V
+			L ... int 0～ 左方向のドット数
+			T ... int 0～ 上方向のドット数
+			R ... int 0～ 右方向のドット数
+			B ... int 0～ 下方向のドット数
+			A ... int 0～255 指定色
+			R ... int 0～255 〃
+			G ... int 0～255 〃
+			B ... int 0～255 〃
 
 	/PLAINS
 
-		���݂̉摜���f�t�H���g�F�̉摜�ɂ���B
+		現在の画像をデフォルト色の画像にする。
 
 	/PLAIN W H
 
-		���݂̉摜��j�����āA�w��T�C�Y�E�f�t�H���g�F�̉摜�ɂ���B
+		現在の画像を破棄して、指定サイズ・デフォルト色の画像にする。
 
-			W ... int 1�` ��
-			H ... int 1�` ����
+			W ... int 1～ 幅
+			H ... int 1～ 高さ
 
 	/PLAINEX W H A R G B
 
-		���݂̉摜��j�����āA�w��T�C�Y�E�w��F�̉摜�ɂ���B
+		現在の画像を破棄して、指定サイズ・指定色の画像にする。
 
-			W ... int 1�` ��
-			H ... int 1�` ����
-			A ... int 0�`255 �w��F
-			R ... int 0�`255 �V
-			G ... int 0�`255 �V
-			B ... int 0�`255 �V
+			W ... int 1～ 幅
+			H ... int 1～ 高さ
+			A ... int 0～255 指定色
+			R ... int 0～255 〃
+			G ... int 0～255 〃
+			B ... int 0～255 〃
 
 	/BOKASHI L T R B LEVEL
 
-		��`�̈���ڂ���
+		矩形領域をぼかす
 
-			L ... int 0�`
-			T ... int 0�`
-			R ... int 0�`
-			B ... int 0�`
-			LEVEL ... int 0�`
+			L ... int 0～
+			T ... int 0～
+			R ... int 0～
+			B ... int 0～
+			LEVEL ... int 0～
 
-	/2 ���̓t�@�C��
+	/2 入力ファイル
 
-		�T�u�摜��ǂݍ��ށB
+		サブ画像を読み込む。
 
 	/2X
 
-		���݂̉摜�ƃT�u�摜�����ւ���B
+		現在の画像とサブ画像を入れ替える。
 
-	/PASTE �� ��
+	/PASTE 左 上
 
-		���݂̉摜�ɃT�u�摜��\��t����B
+		現在の画像にサブ画像を貼り付ける。
 
-			�� ... int 0�` �\��t���ʒu
-			�� ... int 0�` �V
+			左 ... int 0～ 貼り付け位置
+			上 ... int 0～ 〃
 
 	/PRTSC
 
-		�v���C�}�����j�^�̃C���[�W�����݂̉摜�ɂ���B
+		プライマリモニタのイメージを現在の画像にする。
 
 	/DOTFLTR A R G B
 
-		�h�b�g�P�ʂŉ摜�t�B���^���|����B
+		ドット単位で画像フィルタを掛ける。
 
-		A, R, G, B �ɂ͂��ꂼ��ȉ��̂����ꂩ���w�肷��B
+		A, R, G, B にはそれぞれ以下のいずれかを指定する。
 
-			0 �` 255    ... ���l�w��
-			A           ... A �̒l
-			R           ... R �̒l
-			G           ... G �̒l
-			B           ... B �̒l
-			AVG_RGB     ... R, G, B �̕��ϒl
+			0 ～ 255    ... 即値指定
+			A           ... A の値
+			R           ... R の値
+			G           ... G の値
+			B           ... B の値
+			AVG_RGB     ... R, G, B の平均値
 			A_REV       ... 255 - A
 			R_REV       ... 255 - R
 			G_REV       ... 255 - G
 			B_REV       ... 255 - B
 			AVG_RGB_REV ... 255 - AVG_RGB
-			A:nn        ... A �̒l�� nn �p�[�Z���g (n �� 0 �` 9) (ex. A:01, A:50, A:99)
-			R:nn        ... R �̒l�� nn �p�[�Z���g (n �� 0 �` 9) (ex. R:01, R:50, R:99)
-			G:nn        ... G �̒l�� nn �p�[�Z���g (n �� 0 �` 9) (ex. G:01, G:50, G:99)
-			B:nn        ... B �̒l�� nn �p�[�Z���g (n �� 0 �` 9) (ex. B:01, B:50, B:99)
+			A:nn        ... A の値の nn パーセント (n は 0 ～ 9) (ex. A:01, A:50, A:99)
+			R:nn        ... R の値の nn パーセント (n は 0 ～ 9) (ex. R:01, R:50, R:99)
+			G:nn        ... G の値の nn パーセント (n は 0 ～ 9) (ex. G:01, G:50, G:99)
+			B:nn        ... B の値の nn パーセント (n は 0 ～ 9) (ex. B:01, B:50, B:99)

@@ -1,19 +1,19 @@
 ----
-ƒRƒ}ƒ“ƒh
+ã‚³ãƒžãƒ³ãƒ‰
 
-	ƒGƒNƒXƒ|[ƒg
+	ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆ
 
 		FileExporter.exe /E R-DIR E-DIR SUCCESSFUL-FILE
 
-			R-DIR ... ‘¶Ý‚·‚éƒfƒBƒŒƒNƒgƒŠA”z‰º‚Ìƒtƒ@ƒCƒ‹‚ð E-DIR ‚ÉˆÚ“®‚·‚éB
-			E-DIR ... ‘¶Ý‚·‚é‹ó‚ÌƒfƒBƒŒƒNƒgƒŠ
-			SUCCESSFIL-FILE ... ¬Œ÷Žžƒtƒ@ƒCƒ‹‚ðì¬‚·‚éB
+			R-DIR ... å­˜åœ¨ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€é…ä¸‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ E-DIR ã«ç§»å‹•ã™ã‚‹ã€‚
+			E-DIR ... å­˜åœ¨ã™ã‚‹ç©ºã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+			SUCCESSFIL-FILE ... æˆåŠŸæ™‚ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚
 
-			š R-DIR “à‚Ìƒtƒ@ƒCƒ‹‚ðuˆÚ“®v‚·‚é‚±‚Æ‚É’ˆÓI
+			â˜… R-DIR å†…ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã€Œç§»å‹•ã€ã™ã‚‹ã“ã¨ã«æ³¨æ„ï¼
 
-	ƒCƒ“ƒ|[ƒg
+	ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 
 		FileExporter.exe /I E-DIR SUCCESSFUL-FILE
 
-			E-DIR ... ‘¶Ý‚·‚éƒfƒBƒŒƒNƒgƒŠ
-			SUCCESSFIL-FILE ... ¬Œ÷Žžƒtƒ@ƒCƒ‹‚ðì¬‚·‚éB
+			E-DIR ... å­˜åœ¨ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+			SUCCESSFIL-FILE ... æˆåŠŸæ™‚ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚
