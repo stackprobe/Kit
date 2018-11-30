@@ -313,6 +313,7 @@ namespace HGet
 			}
 
 			HttpWebRequest hwr = (HttpWebRequest)HttpWebRequest.Create(_url);
+			hwr.ServicePoint.Expect100Continue = false;
 			DateTime startedTime = DateTime.Now;
 			TimeSpan timeoutSpan = TimeSpan.FromMilliseconds(_timeoutMillis);
 
