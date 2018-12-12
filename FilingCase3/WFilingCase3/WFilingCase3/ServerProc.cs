@@ -48,7 +48,7 @@ namespace Charlotte
 					Gnd.i.keepDiskFree_MB + "000000",
 					"/E",
 					Consts.EV_SERVER_STOP,
-					"HARUNA-WA-DJBD",
+					"ANTI-MIS-EXEC",
 				},
 				StringTools.ENCODING_SJIS
 				);
