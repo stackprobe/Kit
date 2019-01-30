@@ -11,7 +11,7 @@ C#で書いたツールの寄せ集めです。
 開発環境
 --------
 
-	Windows 7 Home Premium
+	Windows 10 Pro
 	Visual C# 2010 Express
 
 	このファイルの場所は C:\Dev\Kit\Readme.txt です。
