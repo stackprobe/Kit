@@ -12,10 +12,10 @@ COPY res\app_16_11.ico out\app_16_11.dat
 C:\Factory\SubTools\EmbedConfig.exe --factory-dir-disabled out\Server.exe
 C:\Factory\SubTools\EmbedConfig.exe --factory-dir-disabled out\CTools.exe
 
-C:\Factory\Tools\zcp.exe out C:\app\Kit\FilingCase3
+C:\Factory\Tools\zcp.exe /F out C:\app\Kit\FilingCase3
 C:\Factory\SubTools\zip.exe /O out FilingCase3
 COPY out\FilingCase3.zip S:\_kit
 CALL C:\home\bat\syncKit.bat
 COPY out\FilingCase3.zip S:\_release\Kit
 
-PAUSE
+C:\Factory\Tools\PauseEx.exe

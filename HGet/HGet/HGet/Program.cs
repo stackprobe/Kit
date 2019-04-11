@@ -262,9 +262,9 @@ namespace HGet
 				if (ArgIs(argq, "/L"))
 				{
 					Console.WriteLine("#### LITE MODE ####");
-					_connectionTimeoutMillis = 2000;
-					_timeoutMillis = 15000;
-					_noTrafficTimeoutMillis = 5000;
+					_connectionTimeoutMillis = 5000;
+					_timeoutMillis = 30000;
+					_noTrafficTimeoutMillis = 20000;
 					_resBodyFileSizeMax = 2000000; // 2 MB
 					continue;
 				}
