@@ -157,10 +157,13 @@ namespace BmpToCsv
 				{
 					Console.WriteLine("JpegQuality: " + this.JpegQuality);
 
-					EncoderParameters eps = new EncoderParameters(1);
-					eps.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, (long)this.JpegQuality);
-					ImageCodecInfo ici = GetICI(imgFmt);
-					bmp.Save(wFile, ici, eps);
+					using (EncoderParameters eps = new EncoderParameters(1))
+					using (EncoderParameter ep = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, (long)this.JpegQuality))
+					{
+						eps.Param[0] = ep;
+						ImageCodecInfo ici = GetICI(imgFmt);
+						bmp.Save(wFile, ici, eps);
+					}
 				}
 				else
 				{
