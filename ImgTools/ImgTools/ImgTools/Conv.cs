@@ -282,7 +282,31 @@ namespace ImgTools
 			}
 		}
 
-		public static ImageData Bokashi(ImageData src, int l, int t, int r, int b, int level, DotData dummyDot)
+		public static ImageData Bokashi(ImageData src, int l, int t, int r, int b, int level, int mode)
+		{
+			ImageData dest;
+
+			switch (mode)
+			{
+				case 0:
+					dest = BokashiMain(src, l, t, r, b, level);
+					break;
+
+				case 1:
+					dest = src;
+					for (int c = 0; c < level; c++)
+					{
+						dest = BokashiMain(dest, l, t, r, b, 1);
+					}
+					break;
+
+				default:
+					throw new Exception("不明なモードです。" + mode);
+			}
+			return dest;
+		}
+
+		private static ImageData BokashiMain(ImageData src, int l, int t, int r, int b, int level)
 		{
 			ImageData dest = new ImageData(src.Get_W(), src.Get_H());
 
@@ -302,14 +326,13 @@ namespace ImgTools
 							{
 								int dx = x + cx;
 								int dy = y + cy;
-								DotData d;
 
 								if (0 <= dx && dx < src.Get_W() && 0 <= dy && dy < src.Get_H())
-									d = src.GetDot(dx, dy);
-								else
-									d = dummyDot;
+								{
+									DotData d = src.GetDot(dx, dy);
 
-								dd.Add(d);
+									dd.Add(d);
+								}
 							}
 						}
 						dot = ImageTools.Mix(dd.ToArray());

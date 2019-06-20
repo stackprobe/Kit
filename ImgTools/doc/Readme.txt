@@ -160,7 +160,7 @@
 			G ... int 0～255 〃
 			B ... int 0～255 〃
 
-	/BOKASHI L T R B LEVEL
+	/BOKASHI L T R B LEVEL [MODE]
 
 		矩形領域をぼかす
 
@@ -169,6 +169,7 @@
 			R ... int 0～
 			B ... int 0～
 			LEVEL ... int 0～
+			MODE ... int 0～1 デフォルト=0
 
 	/2 入力ファイル
 
