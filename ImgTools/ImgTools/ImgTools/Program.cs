@@ -293,10 +293,7 @@ namespace ImgTools
 					int r = int.Parse(ar.NextArg());
 					int b = int.Parse(ar.NextArg());
 					int level = int.Parse(ar.NextArg());
-					int mode = 0;
-
-					if (ar.HasArgs())
-						mode = int.Parse(ar.NextArg());
+					int mode = int.Parse(ar.NextArg());
 
 					_img = Conv.Bokashi(_img, l, t, r, b, level, mode);
 

@@ -160,7 +160,7 @@
 			G ... int 0～255 〃
 			B ... int 0～255 〃
 
-	/BOKASHI L T R B LEVEL [MODE]
+	/BOKASHI L T R B LEVEL MODE
 
 		矩形領域をぼかす
 
