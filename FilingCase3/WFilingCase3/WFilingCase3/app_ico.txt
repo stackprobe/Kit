@@ -1,2 +1,2 @@
-MainWin ‚Ì TaskTrayIcon ‚Ì Icon ‚Ì‚İ app16.ico ‚ğƒZƒbƒg‚·‚éB
-‚»‚êˆÈŠO‚Í app.ico ‚ğƒZƒbƒg‚·‚éB
+MainWin ã® TaskTrayIcon ã® Icon ã®ã¿ app16.ico ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ã€‚
+ãã‚Œä»¥å¤–ã¯ app.ico ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ã€‚

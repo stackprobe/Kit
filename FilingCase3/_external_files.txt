@@ -1,4 +1,4 @@
-���ȉ��̊O���t�@�C���������[�X���Ɋ܂߂�B
+■以下の外部ファイルをリリース物に含める。
 
 	C:\Factory\Program\FilingCase3\Server.exe
 	C:\Factory\Resource\CP932.txt
