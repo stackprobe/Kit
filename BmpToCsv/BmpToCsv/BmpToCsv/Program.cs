@@ -155,7 +155,7 @@ namespace BmpToCsv
 
 				if (imgFmt == ImageFormat.Jpeg && this.JpegQuality != -1)
 				{
-					Console.WriteLine("JpegQuality: " + this.JpegQuality);
+					Console.WriteLine("JpegQuality: " + this.JpegQuality); // 0 ～ 100 == 低画質 ～ 高画質
 
 					using (EncoderParameters eps = new EncoderParameters(1))
 					using (EncoderParameter ep = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, (long)this.JpegQuality))
