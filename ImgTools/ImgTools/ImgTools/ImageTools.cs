@@ -67,7 +67,7 @@ namespace ImgTools
 				int gc = ground.C[color];
 				int c = sc * sa + gc * ga;
 
-				c = (int)IntTools.DivRndOff(c, 255);
+				c = (int)IntTools.DivRndOff(c, sa + ga);
 
 				ret.C[color] = c;
 			}
