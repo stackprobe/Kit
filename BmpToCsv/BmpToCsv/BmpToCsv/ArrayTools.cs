@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BmpToCsv
 {
-	public class ArrayTools
+	public static class ArrayTools
 	{
 		public class Reader<T>
 		{

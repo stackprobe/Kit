@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImgTools
 {
-	public class Conv
+	public static class Conv
 	{
 		public static ImageData Cut(ImageData src, int l, int t, int w, int h)
 		{

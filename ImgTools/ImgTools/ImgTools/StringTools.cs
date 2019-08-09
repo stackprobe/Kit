@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImgTools
 {
-	public class StringTools
+	public static class StringTools
 	{
 		public const string DIGIT = "0123456789";
 		public const string ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImgTools
 {
-	public class Consts
+	public static class Consts
 	{
 		public static readonly DotData DummyDot = new DotData(255, 100, 140, 120);
 	}

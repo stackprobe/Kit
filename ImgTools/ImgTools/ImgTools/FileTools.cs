@@ -6,7 +6,7 @@ using System.IO;
 
 namespace ImgTools
 {
-	public class FileTools
+	public static class FileTools
 	{
 		public static int GetExtPos(string path)
 		{

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImgTools
 {
-	public class ImageTools
+	public static class ImageTools
 	{
 		public static DotData Mix(DotData[] dots)
 		{

@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace PrintImage
 {
-	public class Utils
+	public static class Utils
 	{
 		public static readonly Encoding ENCODING_SJIS = Encoding.GetEncoding(932);
 

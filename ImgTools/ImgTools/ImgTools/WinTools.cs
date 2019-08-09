@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ImgTools
 {
-	public class WinTools
+	public static class WinTools
 	{
 		public static Bitmap PrintScreen()
 		{

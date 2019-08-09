@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BmpToCsv
 {
-	public class StringTools
+	public static class StringTools
 	{
 		private static readonly string _hex = "0123456789abcdef";
 

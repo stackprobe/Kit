@@ -6,7 +6,7 @@ using System.IO;
 
 namespace FileExporter
 {
-	public class CTools
+	public static class CTools
 	{
 		public static string ZPad(string str, int minlen)
 		{

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImgTools
 {
-	public class IntTools
+	public static class IntTools
 	{
 		public static long DivRndOff(long numer, long denom, long rndOffRateNumer = 1, long rndOffRateDenom = 2)
 		{

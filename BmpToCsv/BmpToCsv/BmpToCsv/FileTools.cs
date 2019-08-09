@@ -6,7 +6,7 @@ using System.IO;
 
 namespace BmpToCsv
 {
-	public class FileTools
+	public static class FileTools
 	{
 		public static string GetTmp()
 		{
