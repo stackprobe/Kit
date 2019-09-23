@@ -15,19 +15,24 @@ namespace Charlotte.Mains
 
 		// <---- prm
 
+		private const string CS_LINE_FILE_PREFIX = "    <Compile Include=\"";
+		private const string CS_LINE_FILE_SUFFIX = "\" />";
+
 		private string ProjectFile;
 		private string CsDir;
 
-		private class LineInfo
+		private bool IsTargetCsLine(string line)
 		{
-			public string Line;
+			return
+				line.StartsWith(CS_LINE_FILE_PREFIX + this.CsRelDir + "\\") &&
+				line.EndsWith(CS_LINE_FILE_SUFFIX);
+		}
 
-			public bool IsTargetCs(string csRelDir)
-			{
-				return
-					this.Line.StartsWith("    <Compile Include=\"" + csRelDir + "\\") &&
-					this.Line.EndsWith("\" />");
-			}
+		private bool IsCsLine(string line)
+		{
+			return
+				line.StartsWith(CS_LINE_FILE_PREFIX) &&
+				line.EndsWith(CS_LINE_FILE_SUFFIX);
 		}
 
 		public void Perform()
@@ -49,14 +54,9 @@ namespace Charlotte.Mains
 			if (File.Exists(this.ProjectFile) == false)
 				throw new Exception("no ProjectFile");
 
-			if (Directory.Exists(this.CsDir) == false)
-				throw new Exception("no CsDir");
+			FileTools.CreateDir(this.CsDir);
 
-			List<LineInfo> lines = File.ReadAllLines(this.ProjectFile, Encoding.UTF8).Select(line => new LineInfo()
-			{
-				Line = line,
-			})
-			.ToList();
+			List<string> lines = File.ReadAllLines(this.ProjectFile, Encoding.UTF8).ToList();
 
 			string[] csFiles = Directory.GetFiles(this.CsDir, "*", SearchOption.AllDirectories)
 				.Where(file => Path.GetExtension(file).ToLower() == ".cs")
@@ -65,22 +65,25 @@ namespace Charlotte.Mains
 
 			Array.Sort(csFiles, (a, b) => StringTools.CompIgnoreCase(a, b));
 
-			int targetCsIndex = ArrayTools.IndexOf(lines.ToArray(), line => line.IsTargetCs(this.CsRelDir));
+			int targetCsIndex = ArrayTools.IndexOf(lines.ToArray(), line => this.IsTargetCsLine(line));
 
 			if (targetCsIndex == -1)
-				throw new Exception("Bad targetCsIndex");
+			{
+				targetCsIndex = ArrayTools.LastIndexOf(lines.ToArray(), line => this.IsCsLine(line));
+
+				if (targetCsIndex == -1)
+					throw new Exception("Bad targetCsIndex");
+
+				targetCsIndex++;
+			}
 
 			lines = lines
-				.Where(line => line.IsTargetCs(this.CsRelDir) == false)
+				.Where(line => this.IsTargetCsLine(line) == false)
 				.ToList();
 
-			lines.InsertRange(targetCsIndex, csFiles.Select(file => new LineInfo()
-			{
-				Line = "    <Compile Include=\"" + this.CsRelDir + "\\" + file + "\" />",
-			}
-			));
+			lines.InsertRange(targetCsIndex, csFiles.Select(file => CS_LINE_FILE_PREFIX + this.CsRelDir + "\\" + file + CS_LINE_FILE_SUFFIX));
 
-			File.WriteAllLines(this.ProjectFile, lines.Select(line => line.Line), Encoding.UTF8);
+			File.WriteAllLines(this.ProjectFile, lines, Encoding.UTF8);
 
 			// 終端の改行を除去
 			{
