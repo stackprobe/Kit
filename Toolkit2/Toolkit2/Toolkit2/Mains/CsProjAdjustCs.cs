@@ -54,7 +54,8 @@ namespace Charlotte.Mains
 			if (File.Exists(this.ProjectFile) == false)
 				throw new Exception("no ProjectFile");
 
-			FileTools.CreateDir(this.CsDir);
+			if (Directory.Exists(this.CsDir) == false)
+				throw new Exception("no CsDir");
 
 			List<string> lines = File.ReadAllLines(this.ProjectFile, Encoding.UTF8).ToList();
 
@@ -68,14 +69,7 @@ namespace Charlotte.Mains
 			int targetCsIndex = ArrayTools.IndexOf(lines.ToArray(), line => this.IsTargetCsLine(line));
 
 			if (targetCsIndex == -1)
-			{
-				targetCsIndex = ArrayTools.LastIndexOf(lines.ToArray(), line => this.IsCsLine(line));
-
-				if (targetCsIndex == -1)
-					throw new Exception("Bad targetCsIndex");
-
-				targetCsIndex++;
-			}
+				throw new Exception("Bad targetCsIndex");
 
 			lines = lines
 				.Where(line => this.IsTargetCsLine(line) == false)
