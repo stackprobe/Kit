@@ -1,0 +1,6 @@
+----
+コマンド引数
+
+LinarCacheTrim.exe [/D CACHE-ROOT-DIR]
+
+	CACHE-ROOT-DIR ... デフォルト C:\tmp\LinarCache
