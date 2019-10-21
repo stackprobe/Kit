@@ -163,13 +163,17 @@ namespace Charlotte
 			CacheRootDir = FileTools.MakeFullPath(CacheRootDir);
 
 			if (Directory.Exists(CacheRootDir) == false)
-				throw new Exception("no CacheRootDir");
-
+			{
+				Console.WriteLine("キャッシュのフォルダが無いので終了します。");
+				return;
+			}
 			CacheListFile = Path.Combine(CacheRootDir, "_cache_.lst");
 
 			if (File.Exists(CacheListFile) == false)
-				throw new Exception("no CacheListFile");
-
+			{
+				Console.WriteLine("キャッシュのフォルダにリストファイルが無いので終了します。");
+				return;
+			}
 			CachedDirs = LoadCacheListFile(CacheListFile);
 
 			// ---- 処理 ...
