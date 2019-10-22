@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using Charlotte.Tools;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace Charlotte
 {
@@ -158,6 +159,12 @@ namespace Charlotte
 			if (ar.HasArgs())
 				throw new Exception("不明なコマンド引数");
 
+			if (IsLinarRunning())
+			{
+				Console.WriteLine("Linar.exe 実行中なので終了します。");
+				return;
+			}
+
 			// ---- コマンド引数の読み込み ...
 
 			CacheRootDir = FileTools.MakeFullPath(CacheRootDir);
@@ -259,6 +266,25 @@ namespace Charlotte
 					cachedDir.CacheLocalFile
 					);
 			}
+		}
+
+		private bool IsLinarRunning()
+		{
+			return Process.GetProcesses().Any(proc =>
+			{
+				try
+				{
+					string procFile = proc.MainModule.FileName;
+
+					Console.WriteLine("procFile: " + procFile); // test
+
+					return StringTools.EndsWithIgnoreCase(proc.MainModule.FileName, "Linar.exe");
+				}
+				catch
+				{ }
+
+				return false;
+			});
 		}
 	}
 }
