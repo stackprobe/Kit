@@ -236,7 +236,7 @@ namespace Charlotte
 					renamePairs2.Add(new string[] { midFile, wCacheFile });
 				}
 			}
-			foreach (string[] renamePair in EnumerableTools.Linearize(renamePairs1, renamePairs2))
+			foreach (string[] renamePair in EnumerableTools.Join(renamePairs1, renamePairs2))
 			{
 				string rFile = renamePair[0];
 				string wFile = renamePair[1];
