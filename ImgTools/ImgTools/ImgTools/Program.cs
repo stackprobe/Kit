@@ -99,6 +99,18 @@ namespace ImgTools
 
 					continue;
 				}
+				if (ar.ArgIs("/ER"))
+				{
+					double rate_w = double.Parse(ar.NextArg());
+					double rate_h = double.Parse(ar.NextArg());
+
+					int new_w = IntTools.ToInt(_img.Get_W() * rate_w);
+					int new_h = IntTools.ToInt(_img.Get_H() * rate_h);
+
+					_img = new Expand().Main(_img, new_w, new_h);
+
+					continue;
+				}
 				if (ar.ArgIs("/C"))
 				{
 					int l = int.Parse(ar.NextArg());
