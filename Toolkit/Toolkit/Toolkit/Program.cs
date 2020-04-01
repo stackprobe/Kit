@@ -10,12 +10,14 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Media;
+using System.Threading;
 
 namespace Toolkit
 {
 	class Program
 	{
 		private static readonly Encoding ENCODING_SJIS = Encoding.GetEncoding(932);
+		private const int IMAX = 1000000000;
 
 		static void Main(string[] args)
 		{
@@ -255,6 +257,9 @@ namespace Toolkit
 
 					using (SoundPlayer player = new SoundPlayer(wavFile))
 					{
+						player.LoadTimeout = IMAX;
+						player.Load();
+
 						player.PlaySync();
 					}
 					continue;
