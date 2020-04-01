@@ -9,6 +9,7 @@ using System.Drawing.Drawing2D;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
+using System.Media;
 
 namespace Toolkit
 {
@@ -244,6 +245,17 @@ namespace Toolkit
 							bmp.Save(wFileBase + screen_no.ToString("D2") + ".bmp", ImageFormat.Bmp);
 						}
 						screen_no++;
+					}
+					continue;
+				}
+				if (EqualsIgnoreCase(argq.Peek(), "/PLAY-WAV"))
+				{
+					argq.Dequeue();
+					string wavFile = argq.Dequeue();
+
+					using (SoundPlayer player = new SoundPlayer(wavFile))
+					{
+						player.PlaySync();
 					}
 					continue;
 				}

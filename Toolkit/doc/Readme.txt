@@ -38,3 +38,5 @@
 				C:\temp\screen_1.bmp
 				C:\temp\screen_2.bmp
 				C:\temp\screen_3.bmp
+
+	Toolkit.exe /PLAY-WAV wavファイル
