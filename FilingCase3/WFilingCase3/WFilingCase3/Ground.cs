@@ -5,6 +5,7 @@ using System.Text;
 using Charlotte.Tools;
 using System.IO;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Charlotte
 {
@@ -42,14 +43,19 @@ namespace Charlotte
 
 				int c = 0;
 
+				if (lines.Count != int.Parse(lines[c++]))
+					throw new Exception();
+
 				// items >
 
 				showConsole = (Consts.ShowConsole_e)int.Parse(lines[c++]);
 
 				// < items
 			}
-			catch
-			{ }
+			catch (Exception e)
+			{
+				MessageBox.Show("" + e, "Error @ loadConf()");
+			}
 		}
 
 		private string getConfFile()
@@ -68,6 +74,9 @@ namespace Charlotte
 		{
 			try
 			{
+				if (File.Exists(getDataFile()) == false)
+					return;
+
 				string[] lines = File.ReadAllLines(getDataFile(), Encoding.UTF8);
 				int c = 0;
 
@@ -80,8 +89,10 @@ namespace Charlotte
 
 				// < items
 			}
-			catch
-			{ }
+			catch (Exception e)
+			{
+				MessageBox.Show("" + e, "Error @ loadData()");
+			}
 		}
 
 		public void saveData()
@@ -101,8 +112,10 @@ namespace Charlotte
 
 				File.WriteAllLines(getDataFile(), lines, Encoding.UTF8);
 			}
-			catch
-			{ }
+			catch (Exception e)
+			{
+				MessageBox.Show("" + e, "Error @ saveData()");
+			}
 		}
 
 		private string getDataFile()
