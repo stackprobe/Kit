@@ -60,7 +60,16 @@ namespace Charlotte
 
 		private string getConfFile()
 		{
-			return Path.Combine(Program.selfDir, Path.GetFileNameWithoutExtension(Program.selfFile) + ".conf");
+			string file = Path.Combine(Program.selfDir, Path.GetFileNameWithoutExtension(Program.selfFile) + ".conf");
+
+			if (File.Exists(file) == false)
+			{
+				file = @"..\..\..\..\doc\WFilingCase3.conf"; // @ devenv
+
+				if (File.Exists(file) == false)
+					throw new Exception("no .conf");
+			}
+			return file;
 		}
 
 		// ---- saved data ----
