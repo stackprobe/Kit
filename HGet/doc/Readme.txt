@@ -1,18 +1,22 @@
 ----
 コマンド
 
-	HGet.exe [/P (DIRECT | IE | SPECIAL proxy-host proxy-port)] [/-TLS12] [/To timeout-millis]
+	HGet.exe [/P (DIRECT | IE | SPECIAL proxy-host proxy-port)] [/TLS12 | /-TLS12]
+	         [/L] [/CT connection-timeout-millis] [/To timeout-millis] [/NTT no-traffic-timeout-millis]
 	         [/M (HEAD | GET | POST)] [/U url] [/V (10 | 11)]
 	         [/H header-field-name header-field-value] ...
 	         [/B body-string | /BF body-file]
 	         [/F body-2-file]
 	         [/T body-3-string | /TF body-3-file]
 	         [/RSF successfule-file] [/RHF res-header-fields-file] [/RBF res-body-file] [/RBFX res-body-file-size-max]
-			 [/K | /K-]
+	         [/K | /K-]
 	         [/-]
 	         [url | url body-file]
 
+		/TLS12  ... TLS 1.2 を有効にする。(デフォルトで有効なので指定する必要は無い)
 		/-TLS12 ... TLS 1.2 を無効にする。
+
+		/L  ... 軽量モード
 
 		/K  ... 終了時キー待ち。
 		/K- ... エラー終了時キー待ち。
