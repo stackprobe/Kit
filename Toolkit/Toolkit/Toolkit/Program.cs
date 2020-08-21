@@ -54,8 +54,8 @@ namespace Toolkit
 					using (Bitmap bmp = new Bitmap(img))
 					using (Graphics g = Graphics.FromImage(bmp))
 					{
-						Color fillColor = Color.DarkRed;
-						//Color fillColor = Color.FromArgb(96, 15, 24); // Bordeaux
+						//Color fillColor = Color.DarkRed;
+						Color fillColor = Color.FromArgb(96, 15, 24); // Bordeaux
 
 						g.FillRectangle(new SolidBrush(fillColor), 0, 0, bmp.Width, bmp.Height); // 単色
 
