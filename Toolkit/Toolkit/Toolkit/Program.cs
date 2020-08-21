@@ -54,7 +54,10 @@ namespace Toolkit
 					using (Bitmap bmp = new Bitmap(img))
 					using (Graphics g = Graphics.FromImage(bmp))
 					{
-						g.FillRectangle(Brushes.DarkRed, 0, 0, bmp.Width, bmp.Height); // 単色
+						//Color DARK_RED = Color.DarkRed;
+						Color BORDEAUX = Color.FromArgb(96, 15, 24);
+
+						g.FillRectangle(new SolidBrush(BORDEAUX), 0, 0, bmp.Width, bmp.Height); // 単色
 
 						bmp.Save(wFile);
 					}
