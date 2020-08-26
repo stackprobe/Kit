@@ -31,12 +31,12 @@
 	Toolkit.exe /PRINT-SCREEN 出力ファイルbase
 
 		ex.
-			Toolkit /print-screen C:\temp\screen_
+			Toolkit /print-screen C:\temp\Screen_
 
 			モニタ３つのとき...
 
-				C:\temp\screen_1.bmp
-				C:\temp\screen_2.bmp
-				C:\temp\screen_3.bmp
+				C:\temp\Screen_01.bmp
+				C:\temp\Screen_02.bmp
+				C:\temp\Screen_03.bmp
 
 	Toolkit.exe /PLAY-WAV wavファイル

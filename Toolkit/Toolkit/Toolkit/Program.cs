@@ -237,7 +237,7 @@ namespace Toolkit
 					argq.Dequeue();
 					string wFileBase = argq.Dequeue();
 
-					int screen_no = 1;
+					int screenNo = 1;
 
 					foreach (Screen screen in Screen.AllScreens)
 					{
@@ -247,9 +247,9 @@ namespace Toolkit
 							{
 								g.CopyFromScreen(screen.Bounds.Location, new Point(0, 0), screen.Bounds.Size);
 							}
-							bmp.Save(wFileBase + screen_no.ToString("D2") + ".bmp", ImageFormat.Bmp);
+							bmp.Save(wFileBase + screenNo.ToString("D2") + ".bmp", ImageFormat.Bmp);
 						}
-						screen_no++;
+						screenNo++;
 					}
 					continue;
 				}
