@@ -11,7 +11,7 @@ http://stackprobe.dip.jp/_kit
 開発環境
 --------
 
-Windows 10 Pro
+Windows 10 (Pro | Home)
 Visual C# 2010 Express
 
 このファイルの場所は C:\Dev\Kit\Readme.txt です。
