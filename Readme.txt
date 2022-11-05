@@ -5,7 +5,7 @@ C#で書いたツールの寄せ集めです。
 各フォルダ直下の doc フォルダの下に Readme.txt があります。
 実行形式は以下の場所からダウンロードできます。
 
-http://stackprobe.ccsp.mydns.jp/_kit
+_ttp://stackprobe.ccsp.mydns.jp/_kit   -- ファイルが行方不明
 
 
 開発環境
